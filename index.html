@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CX 주간 실적</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f4f5f2;
+  --surface: #fcfcfb;
+  --ink-1: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-3: #6f6d68;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --series: #2a78d6;
+  --series-wash: rgba(42,120,214,0.10);
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --target: #898781;
+  --good: #0ca30c;
+  --good-ink: #006300;
+  --bad: #d03b3b;
+  --bad-ink: #b42323;
+  --good-bg: rgba(12,163,12,0.10);
+  --bad-bg: rgba(208,59,59,0.10);
+  --sample: #b9b7ae;
+  --shadow: 0 1px 2px rgba(11,11,11,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink-1: #f0efec; --ink-2: #c3c2b7; --ink-3: #a3a198;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --series: #3987e5; --series-wash: rgba(57,135,229,0.14); --series-2: #d95926; --series-3: #199e70; --target: #898781;
+    --good-ink: #3dc43d; --bad-ink: #ff7b7b; --good-bg: rgba(12,163,12,0.16); --bad-bg: rgba(208,59,59,0.18);
+    --sample: #5a5953; --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink-1: #f0efec; --ink-2: #c3c2b7; --ink-3: #a3a198;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --series: #3987e5; --series-wash: rgba(57,135,229,0.14); --series-2: #d95926; --series-3: #199e70; --target: #898781;
+  --good-ink: #3dc43d; --bad-ink: #ff7b7b; --good-bg: rgba(12,163,12,0.16); --bad-bg: rgba(208,59,59,0.18);
+  --sample: #5a5953; --shadow: none;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--page); color: var(--ink-1);
+  font-family: "Pretendard Variable", Pretendard, "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1320px; margin: 0 auto; padding: 28px 24px 56px; }
+
+/* header */
+header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; margin-bottom: 20px; }
+.eyebrow { font-size: 13px; font-weight: 600; color: var(--ink-3); letter-spacing: .02em; }
+h1 { margin: 2px 0 0; font-size: 28px; font-weight: 750; letter-spacing: -0.02em; }
+.period { margin-top: 4px; font-size: 15px; color: var(--ink-2); }
+.period b { color: var(--ink-1); font-weight: 650; }
+.controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.controls label { font-size: 13px; color: var(--ink-3); font-weight: 600; }
+select, .btn {
+  font: inherit; font-size: 14px; color: var(--ink-1); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer;
+}
+select { padding-right: 32px; appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-2) 50%), linear-gradient(135deg, var(--ink-2) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%; background-size: 5px 5px; background-repeat: no-repeat; }
+.btn:hover, select:hover { border-color: var(--axis); }
+.btn:focus-visible, select:focus-visible { outline: 2px solid var(--series); outline-offset: 2px; }
+
+.notice {
+  display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; margin-bottom: 20px;
+  border-radius: 10px; background: var(--surface); border: 1px solid var(--border); font-size: 13.5px; color: var(--ink-2);
+}
+.notice .dot { flex: none; width: 10px; height: 10px; margin-top: 5px; border-radius: 50%; border: 2px solid var(--sample); }
+
+/* summary strip */
+.summary { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-bottom: 14px; font-size: 15px; color: var(--ink-2); }
+.summary .count { font-size: 15px; font-weight: 700; color: var(--ink-1); }
+
+/* KPI tiles */
+.tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-bottom: 28px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px 14px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; min-width: 0;
+}
+.tile-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tile-name { font-size: 14.5px; font-weight: 650; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.badge {
+  flex: none; display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; font-weight: 700;
+  padding: 3px 9px 3px 7px; border-radius: 999px;
+}
+.badge svg { width: 13px; height: 13px; }
+.badge.good { color: var(--good-ink); background: var(--good-bg); }
+.badge.bad { color: var(--bad-ink); background: var(--bad-bg); }
+.tile-value { margin-top: 10px; font-size: 38px; font-weight: 750; letter-spacing: -0.03em; line-height: 1.1; }
+.tile-value small { font-size: 20px; font-weight: 650; margin-left: 2px; color: var(--ink-2); }
+.tile-meta { margin-top: 8px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13.5px; color: var(--ink-3); }
+.delta { font-weight: 700; font-size: 14.5px; }
+.delta.good { color: var(--good-ink); }
+.delta.bad { color: var(--bad-ink); }
+.delta.flat { color: var(--ink-2); }
+.spark { margin-top: 10px; height: 40px; }
+.spark { position: relative; }
+.spark svg { display: block; width: 100%; height: 40px; overflow: visible; }
+.spark-dot { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--series); border: 2px solid var(--surface); }
+
+/* sections */
+h2 { font-size: 19px; font-weight: 720; margin: 0 0 4px; letter-spacing: -0.01em; }
+.sub { font-size: 13.5px; color: var(--ink-3); margin: 0 0 14px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 32px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px 10px; box-shadow: var(--shadow); min-width: 0; position: relative; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.card-title { font-size: 15.5px; font-weight: 700; }
+.card-scope { font-size: 12.5px; color: var(--ink-3); }
+.card-now { font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
+.card-now b { color: var(--ink-1); font-size: 15px; }
+.legend { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-2); margin-top: 4px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.chart { position: relative; margin-top: 6px; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart text { font-family: inherit; }
+.tick { font-size: 11.5px; fill: var(--ink-3); font-variant-numeric: tabular-nums; }
+.end-label { font-size: 12.5px; font-weight: 700; fill: var(--ink-1); }
+.tgt-label { font-size: 11.5px; font-weight: 600; fill: var(--ink-3); }
+
+.tip {
+  position: absolute; pointer-events: none; z-index: 5; min-width: 150px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 11px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.12); font-size: 13px; color: var(--ink-2); opacity: 0; transition: opacity .12s;
+}
+.tip.on { opacity: 1; }
+.tip .t-week { font-weight: 650; color: var(--ink-1); margin-bottom: 3px; }
+.tip .t-val { font-size: 17px; font-weight: 750; color: var(--ink-1); }
+.tip .t-row { display: flex; justify-content: space-between; gap: 12px; }
+.tip .t-sample { margin-top: 3px; font-size: 12px; color: var(--ink-3); }
+
+/* table */
+.table-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 820px; }
+th, td { padding: 10px 14px; text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th { font-size: 12.5px; font-weight: 650; color: var(--ink-3); border-bottom: 1px solid var(--grid); position: sticky; top: 0; background: var(--surface); }
+thead th .tg { display: block; font-weight: 500; }
+tbody td { border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; color: var(--ink-1); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr.sel td { background: var(--series-wash); }
+tbody tr { cursor: pointer; }
+tbody tr:hover td { background: color-mix(in srgb, var(--series-wash) 60%, transparent); }
+td .d { display: block; font-size: 12px; font-weight: 600; }
+td .d.good { color: var(--good-ink); } td .d.bad { color: var(--bad-ink); } td .d.flat { color: var(--ink-3); }
+td.miss .v { color: var(--bad-ink); font-weight: 700; }
+td.miss .v::before { content: "!"; display: inline-grid; place-items: center; width: 15px; height: 15px; margin-right: 6px; border-radius: 50%;
+  background: var(--bad); color: #fff; font-size: 11px; font-weight: 800; font-style: normal; vertical-align: 1px; }
+td.ex { color: var(--ink-3); font-style: italic; }
+.wk-note { font-size: 12px; color: var(--ink-3); margin-left: 6px; }
+
+footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+@media (max-width: 1100px) {
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 20px 16px 40px; }
+  h1 { font-size: 23px; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile-value { font-size: 30px; }
+  .tile-meta { flex-direction: column; gap: 2px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* brand tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tab {
+  font: inherit; font-size: 14.5px; font-weight: 650; color: var(--ink-2); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 999px; padding: 7px 16px; cursor: pointer;
+}
+.tab:hover { border-color: var(--axis); color: var(--ink-1); }
+.tab[aria-selected="true"] { background: var(--ink-1); color: var(--surface); border-color: var(--ink-1); }
+.tab:focus-visible { outline: 2px solid var(--series); outline-offset: 2px; }
+.tiles.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.badge.ref { color: var(--ink-2); background: color-mix(in srgb, var(--axis) 35%, transparent); }
+.tile-n { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+.tile-empty { margin-top: 12px; font-size: 15px; color: var(--ink-3); }
+.scope-note { font-size: 13.5px; color: var(--ink-2); background: var(--surface); border: 1px dashed var(--axis); border-radius: 10px; padding: 9px 14px; margin: -14px 0 24px; }
+
+/* brand compare */
+.cmp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 32px; }
+.cmp-row { display: grid; grid-template-columns: 82px minmax(0, 1fr) 92px; align-items: center; gap: 10px; padding: 7px 0; }
+.cmp-row + .cmp-row { border-top: 1px solid var(--grid); }
+.cmp-name { font-size: 14px; font-weight: 650; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cmp-name:hover { color: var(--series); text-decoration: underline; }
+.cmp-track { position: relative; height: 16px; }
+.cmp-bar { position: absolute; left: 0; top: 2px; height: 12px; border-radius: 0 4px 4px 0; background: var(--series); }
+.cmp-bar.ex { background: var(--surface); border: 1.5px solid var(--series); }
+.cmp-tgt { position: absolute; top: -3px; bottom: -3px; width: 1.5px; background: var(--target); }
+.cmp-val { text-align: right; font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cmp-val small { display: block; font-size: 11.5px; font-weight: 500; color: var(--ink-3); }
+.cmp-val.miss { color: var(--bad-ink); }
+.cmp-none { color: var(--ink-3); font-size: 13px; }
+.cmp-foot { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.cmp-empty { font-size: 12.5px; color: var(--ink-3); padding: 8px 0 2px; border-top: 1px solid var(--grid); }
+
+/* sticky brand tabs + section jump */
+.stick { position: sticky; top: 0; z-index: 20; background: var(--page); padding: 10px 0 8px; margin: 0 0 12px; border-bottom: 1px solid var(--grid); }
+.stick .tabs { margin-bottom: 8px; }
+.jump { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; }
+.jump a { color: var(--ink-2); text-decoration: none; font-weight: 600; padding: 2px 0; }
+.jump a:hover { color: var(--series); }
+.sec { scroll-margin-top: 110px; margin-bottom: 32px; }
+#sec-table, #sec-kpi { scroll-margin-top: 110px; }
+.card.wide { margin-top: 12px; }
+
+/* ALF */
+.alf-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 12px; }
+.stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow); }
+.stat-label { font-size: 14px; font-weight: 650; color: var(--ink-2); display: flex; align-items: center; gap: 7px; }
+.stat-label i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.stat-value { margin-top: 10px; font-size: 32px; font-weight: 750; letter-spacing: -0.03em; line-height: 1.1; }
+.stat-value small { font-size: 17px; font-weight: 650; color: var(--ink-2); margin-left: 2px; }
+.stat-meta { margin-top: 6px; font-size: 13px; color: var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* agent */
+.agent-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 12px; }
+.meter { height: 14px; border-radius: 999px; background: color-mix(in srgb, var(--series) 18%, transparent); overflow: hidden; margin: 14px 0 8px; }
+.meter span { display: block; height: 100%; background: var(--series); border-radius: 999px 0 0 999px; }
+.split { display: flex; justify-content: space-between; font-size: 13.5px; color: var(--ink-2); }
+.split b { color: var(--ink-1); }
+.rate-rows { margin-top: 14px; border-top: 1px solid var(--grid); }
+.rate-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--grid); font-size: 14px; color: var(--ink-2); }
+.rate-row b { color: var(--ink-1); font-variant-numeric: tabular-nums; }
+
+/* heatmap */
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; font-weight: 600; padding: 5px 12px; border: 0; background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink-1); color: var(--surface); }
+.heat-scroll { overflow-x: auto; margin-top: 12px; }
+.heat { display: grid; grid-template-columns: 28px repeat(24, minmax(34px, 1fr)); gap: 3px; min-width: 900px; font-variant-numeric: tabular-nums; }
+.heat .hh { font-size: 11.5px; color: var(--ink-3); text-align: center; padding-bottom: 2px; }
+.heat .dd { font-size: 12.5px; color: var(--ink-2); font-weight: 650; display: flex; align-items: center; }
+.heat .c { height: 30px; border-radius: 5px; display: grid; place-items: center; font-size: 12px; font-weight: 650; position: relative; }
+.heat .c.z { color: var(--ink-3); font-weight: 400; }
+.heat .c:hover { outline: 2px solid var(--ink-1); outline-offset: 1px; z-index: 1; }
+.heat-legend { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 12px; font-size: 12.5px; color: var(--ink-3); }
+.heat-legend .bar { width: 160px; height: 10px; border-radius: 999px; }
+
+/* tags */
+.tag-row { display: grid; grid-template-columns: 26px minmax(120px, 220px) minmax(0, 1fr) 70px 64px 84px; align-items: center; gap: 12px; padding: 9px 0; }
+.tag-row + .tag-row { border-top: 1px solid var(--grid); }
+.tag-row.head { font-size: 12.5px; color: var(--ink-3); font-weight: 650; padding-top: 0; }
+.tag-rank { font-size: 13px; color: var(--ink-3); font-weight: 700; text-align: right; }
+.tag-name { font-size: 14.5px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tag-track { height: 14px; }
+.tag-bar { height: 14px; border-radius: 0 4px 4px 0; background: var(--series); }
+.tag-num { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tag-share { text-align: right; color: var(--ink-2); font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.tag-d { text-align: right; font-size: 13px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.tag-d.up, .tag-d.down { color: var(--ink-2); } .tag-d.flat { color: var(--ink-3); }
+.tag-new { font-size: 11px; font-weight: 700; color: var(--series); margin-left: 6px; }
+
+@media (max-width: 1100px) { .cmp { grid-template-columns: repeat(2, minmax(0, 1fr)); } .alf-grid, .agent-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) {
+  .tag-row { grid-template-columns: 20px minmax(0, 1fr) 52px 60px; }
+  .tag-row .tag-track, .tag-row .tag-share { display: none; }
+  .jump { gap: 2px 12px; font-size: 12.5px; }
+}
+@media (max-width: 640px) { .cmp, .tiles.n3 { grid-template-columns: minmax(0, 1fr); } .tiles.n3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">CX팀 · 채널톡 주간 실적</div>
+      <h1>주간 실적 대시보드</h1>
+      <div class="period" id="period"></div>
+    </div>
+    <div class="controls">
+      <label for="week">기준 주</label>
+      <select id="week"></select>
+      <button class="btn" id="theme" type="button" aria-label="화면 모드 바꾸기">어두운 화면</button>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" hidden><span class="dot"></span><span id="notice-text"></span></div>
+
+  <div class="stick">
+    <nav class="tabs" id="tabs" role="tablist" aria-label="브랜드"></nav>
+    <nav class="jump" aria-label="섹션 바로가기">
+      <a href="#sec-kpi">핵심 지표</a><a href="#sec-alf" data-alf>ALF 퍼포먼스</a><a href="#sec-agent">응대 주체</a><a href="#sec-traffic">상담 트래픽</a><a href="#sec-tags">상담 태그</a><a href="#sec-table">주차별 표</a>
+    </nav>
+  </div>
+  <span id="sec-kpi"></span>
+
+  <div class="summary" id="summary"></div>
+  <section class="tiles" id="tiles" aria-label="이번 주 지표"></section>
+  <div class="scope-note" id="scope-note" hidden></div>
+
+  <div id="cmp-wrap">
+    <h2>브랜드 비교</h2>
+    <p class="sub">기준 주의 브랜드별 값입니다. 세로선은 목표, 브랜드 이름을 누르면 그 브랜드 화면으로 넘어갑니다.</p>
+    <section class="cmp" id="cmp"></section>
+  </div>
+
+  <h2>주간 추이</h2>
+  <p class="sub">최근 8주. 가로선은 목표입니다. 점에 마우스를 올리면 전주 대비 증감이 보이고, 누르면 그 주로 바뀝니다.</p>
+  <section class="grid" id="charts"></section>
+
+  <section id="sec-alf" class="sec">
+    <h2>ALF 퍼포먼스</h2>
+    <p class="sub">슬룸 기준. 일 단위도 17시에 끊고, 끝나는 날짜로 표시합니다. 미해결 = ALF가 응대한 뒤 상담사가 배정된 상담.</p>
+    <div class="alf-grid">
+      <div class="stat-grid" id="alf-stats"></div>
+      <article class="card"><div class="card-head"><span class="card-title">ALF 해결·미해결 상담 (일별)</span><span class="card-scope" id="alf-day-scope"></span></div>
+        <div class="legend" id="alf-day-legend"></div><div class="chart" id="alf-day"></div></article>
+    </div>
+    <article class="card wide"><div class="card-head"><span class="card-title">ALF 해결·미해결 상담 (주별)</span><span class="card-scope">최근 8주</span></div>
+      <div class="legend" id="alf-week-legend"></div><div class="chart" id="alf-week"></div></article>
+  </section>
+
+  <section id="sec-agent" class="sec">
+    <h2>응대 주체별 I/B</h2>
+    <p class="sub">I/B 인입호를 누가 응대했는지 봅니다. 상담원 = 상담사가 답변한 상담, ALF = 상담사 답변 없이 ALF로 끝난 상담.</p>
+    <div class="agent-grid">
+      <article class="card"><div class="card-head"><span class="card-title">응대 주체별 I/B (일별)</span><span class="card-scope" id="agent-scope"></span></div>
+        <div class="legend" id="agent-legend"></div><div class="chart" id="agent-day"></div></article>
+      <article class="card" id="agent-rate"></article>
+    </div>
+  </section>
+
+  <section id="sec-traffic" class="sec">
+    <h2>상담 트래픽</h2>
+    <p class="sub">요일 × 시간대별 인입 건수 (관여 시작 시각 기준, O/B 제외). 색이 진할수록 많습니다.</p>
+    <article class="card wide">
+      <div class="card-head"><span class="card-title" id="heat-title">시간대별 I/B 인입호</span>
+        <span class="seg" role="group" aria-label="집계 범위"><button type="button" data-h="ib" aria-pressed="true">I/B 인입호</button><button type="button" data-h="all" aria-pressed="false">포기·비운영 포함</button></span></div>
+      <div class="heat-scroll"><div class="heat" id="heat"></div></div>
+      <div class="heat-legend" id="heat-legend"></div>
+    </article>
+  </section>
+
+  <section id="sec-tags" class="sec">
+    <h2>상담 태그 TOP 10</h2>
+    <p class="sub" id="tags-sub"></p>
+    <article class="card wide"><div id="tags"></div></article>
+  </section>
+
+  <h2 id="sec-table">주차별 표</h2>
+  <p class="sub">행을 누르면 위 카드가 그 주 기준으로 바뀝니다. 빨간 ! 표시는 목표 미달입니다.</p>
+  <div class="table-card"><table id="table"></table></div>
+
+  <footer>
+    <span id="basis"></span>
+    <span id="updated"></span>
+  </footer>
+</div>
+
+<script src="data/weekly.js"></script>
+<script>
+(() => {
+  const D = window.WEEKLY, W = D.weeks, BR = D.brands, ALL = '전체';
+  const DAY = ['일', '월', '화', '수', '목', '금', '토'];
+  const SMALL_N = 10;   // 응답 수가 이보다 적으면 판정 대신 '참고'
+  const KPIS = [
+    { id: 'alf_rate',   name: 'ALF 해결률',   unit: '%',   target: 90,  up: true, only: '슬룸',
+      scope: { [ALL]: '슬룸 기준' }, desc: 'ALF가 응대한 상담 중 상담사가 배정되지 않은 비율' },
+    { id: 'alf_handle', name: 'ALF 처리 비율', unit: '%',   target: 71,  up: true, only: '슬룸',
+      scope: { [ALL]: '슬룸 기준' }, desc: 'I/B 상담 중 상담사 답변 없이 ALF로 끝난 비율' },
+    { id: 'csat',       name: 'CSAT',         unit: '점',  target: 4.0, up: true,
+      scope: { [ALL]: `전 브랜드 ${BR.length}개 채널 합산` }, desc: '만족도 응답 평균 (설문 발송 시각 기준)' },
+    { id: 'ces',        name: 'CES',          unit: '점',  target: 3.6, up: true, official: '슬룸',
+      scope: { [ALL]: '슬룸 기준 (공식 지표)' }, desc: '노력 점수 응답 평균 (설문 발송 시각 기준)' },
+    { id: 'frt',        name: 'FRT',          unit: 'sec', target: 600, up: false,
+      scope: { [ALL]: '브랜드별 값의 단순 평균' }, desc: '첫 응답까지 걸린 시간 (운영 시간 기준)' }
+  ];
+  const KM = Object.fromEntries(KPIS.map(k => [k.id, k]));
+  const FIELDS = { alf_rate: ['alf_rate'], alf_handle: ['alf_handle'], csat: ['csat_sum', 'csat_n'], ces: ['ces_sum', 'ces_n'], frt: ['frt'] };
+
+  const hashGet = () => Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
+  const h0 = hashGet();
+  let view = [ALL, ...BR].includes(h0.brand) ? h0.brand : ALL;
+  let sel = W.findIndex(w => w.end === h0.week); if (sel < 0) sel = W.length - 1;
+
+  const $ = s => document.querySelector(s);
+  const md = s => { const d = new Date(s + 'T00:00:00'); return `${d.getMonth() + 1}/${d.getDate()}`; };
+  const wkLabel = w => `${md(w.start)} ~ ${md(w.end)}`;
+  const wkLong = w => { const a = new Date(w.start + 'T00:00:00'), b = new Date(w.end + 'T00:00:00');
+    return `${a.getMonth() + 1}/${a.getDate()}(${DAY[a.getDay()]}) 17:00 ~ ${b.getMonth() + 1}/${b.getDate()}(${DAY[b.getDay()]}) 17:00`; };
+
+  // ---------- 값 계산: 브랜드 원자료 → 화면 값 (전체는 집계 기준 v2.1 규칙대로) ----------
+  const exOf = (b, fs) => fs.some(f => (b.sample || []).includes(f));
+  function brandVal(w, brand, id) {
+    const b = w.brands[brand]; if (!b) return { v: null };
+    const k = KM[id], ex = exOf(b, FIELDS[id]);
+    if (k.only && brand !== k.only) return { v: null, na: true };
+    if (id === 'csat' || id === 'ces') { const n = b[id + '_n']; return { v: n ? b[id + '_sum'] / n : null, n, ex }; }
+    return { v: b[id] ?? null, ex, n: id === 'alf_rate' ? b.alf : id === 'alf_handle' ? b.ib : id === 'frt' ? b.frt_n : null };
+  }
+  function get(w, id, v = view) {
+    if (v !== ALL) return brandVal(w, v, id);
+    const k = KM[id];
+    if (k.only) return brandVal(w, k.only, id);
+    if (k.official) return brandVal(w, k.official, id);
+    if (id === 'csat') {
+      let s = 0, n = 0, ex = false;
+      BR.forEach(b => { const x = w.brands[b]; s += x.csat_sum; n += x.csat_n; ex = ex || (x.csat_n > 0 && exOf(x, FIELDS.csat)); });
+      return { v: n ? s / n : null, n, ex };
+    }
+    if (id === 'frt') {
+      const xs = BR.map(b => ({ v: w.brands[b].frt, ex: exOf(w.brands[b], ['frt']) })).filter(x => x.v != null);
+      return { v: xs.length ? xs.reduce((a, x) => a + x.v, 0) / xs.length : null, nb: xs.length, ex: xs.some(x => x.ex) };
+    }
+  }
+  function volume(w, v = view) {
+    const bs = v === ALL ? BR : [v];
+    return { ib: bs.reduce((a, b) => a + w.brands[b].ib, 0), ibEx: bs.some(b => exOf(w.brands[b], ['ib'])),
+             alf: (v === ALL || v === '슬룸') ? w.brands['슬룸'].alf : null, alfEx: exOf(w.brands['슬룸'], ['alf']) };
+  }
+  const kpisFor = v => KPIS.filter(k => !k.only || v === ALL || v === k.only);
+
+  // ---------- 표기 ----------
+  function fmt(k, v) {
+    if (v == null) return '—';
+    if (k.unit === 'sec') { const r = Math.round(v), m = Math.floor(r / 60), s = r % 60; return m ? `${m}분 ${String(s).padStart(2, '0')}초` : `${s}초`; }
+    if (k.unit === '%') return `${+v.toFixed(2)}%`;
+    return v.toFixed(2);
+  }
+  function fmtParts(k, v) {
+    if (k.unit === 'sec') { const r = Math.round(v), m = Math.floor(r / 60), s = r % 60; return m ? `${m}<small>분</small> ${String(s).padStart(2, '0')}<small>초</small>` : `${s}<small>초</small>`; }
+    if (k.unit === '%') return `${+v.toFixed(2)}<small>%</small>`;
+    return `${v.toFixed(2)}<small>점</small>`;
+  }
+  function fmtDelta(k, d) {
+    if (d == null || isNaN(d)) return '—';
+    const a = d > 0 ? '▲' : d < 0 ? '▼' : '–', x = Math.abs(d);
+    if (k.unit === 'sec') { const r = Math.round(x), m = Math.floor(r / 60), s = r % 60; return `${a} ${m ? m + '분 ' : ''}${s}초`; }
+    if (k.unit === '%') return `${a} ${x.toFixed(2)}%p`;
+    return `${a} ${x.toFixed(2)}`;
+  }
+  // 화면에 보이는 자릿수로 반올림한 값끼리 뺀다 (4.01 → 4.01 인데 ▼0.00 이 뜨지 않게)
+  const shown = (id, v) => id === 'frt' ? Math.round(v) : Math.round(v * 100) / 100;
+  const diff = (a, b, id) => a.v == null || !b || b.v == null ? null : +(shown(id, a.v) - shown(id, b.v)).toFixed(2);
+  const better = (k, d) => d == null || Math.abs(d) < 1e-9 ? 'flat' : ((d > 0) === k.up ? 'good' : 'bad');
+  const pass = (k, v) => v == null ? null : k.up ? v >= k.target - 1e-9 : v <= k.target;
+  const smallN = (k, x) => (k.id === 'csat' || k.id === 'ces') && x.n != null && x.n < SMALL_N;
+  const tgtTxt = k => k.unit === 'sec' ? `${k.target / 60}분 이내` : k.unit === '%' ? `${k.target}% 이상` : `${k.target.toFixed(1)}점 이상`;
+  const nTxt = (k, x) => x.nb != null ? `${x.nb}개 브랜드` : (k.id === 'csat' || k.id === 'ces') ? `응답 ${x.n ?? 0}건` : k.id === 'frt' && x.n != null ? `상담 ${x.n.toLocaleString()}건` :
+    k.id === 'alf_rate' && x.n ? `ALF 응대 ${x.n.toLocaleString()}건` : k.id === 'alf_handle' && x.n ? `I/B ${x.n.toLocaleString()}건` : '';
+  const scopeTxt = k => view === ALL ? k.scope[ALL] : view;
+  const ICON = {
+    good: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>',
+    bad: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 3.5v5.5"/><path d="M8 12.2v.3"/></svg>'
+  };
+  function badge(k, x) {
+    if (x.v == null) return '';
+    if (smallN(k, x)) return `<span class="badge ref" title="응답이 ${SMALL_N}건 미만이라 판정하지 않습니다">참고</span>`;
+    const ok = pass(k, x.v);
+    return `<span class="badge ${ok ? 'good' : 'bad'}">${ICON[ok ? 'good' : 'bad']}${ok ? '달성' : '미달성'}</span>`;
+  }
+
+  // ---------- 상단 ----------
+  W.forEach((w, i) => $('#week').insertAdjacentHTML('afterbegin', `<option value="${i}">${wkLabel(w)}${i === W.length - 1 ? ' (최근)' : ''}</option>`));
+  $('#tabs').innerHTML = [ALL, ...BR].map(b => `<button class="tab" role="tab" data-b="${b}">${b === ALL ? '전체 통합' : b}</button>`).join('');
+  $('#tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if (t) setView(t.dataset.b); });
+  if (W.some(w => BR.some(b => (w.brands[b].sample || []).length))) {
+    $('#notice').hidden = false;
+    $('#notice-text').textContent = '예시 값이 섞여 있습니다. 차트의 빈 원과 표의 기울임 글씨가 예시 값입니다.';
+  }
+  $('#basis').textContent = `집계 기준: ${D.basis}`;
+  $('#updated').textContent = `갱신: ${D.generated_at.replace('T', ' ').slice(0, 16)}`;
+
+  function renderHead() {
+    const w = W[sel], p = W[sel - 1];
+    $('#period').innerHTML = `<b>${wkLong(w)}</b>${p ? ` · 전주 ${wkLabel(p)} 대비` : ''}`;
+    document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.b === view));
+    const ks = kpisFor(view), xs = ks.map(k => [k, get(w, k.id)]).filter(([k, x]) => x.v != null && !smallN(k, x));
+    const ok = xs.filter(([k, x]) => pass(k, x.v)).length;
+    const vo = volume(w), vp = p ? volume(p) : null;
+    $('#summary').innerHTML = `<span class="count">목표 달성 ${ok} / ${xs.length}</span>`
+      + `<span>I/B 상담 <b class="count">${vo.ib.toLocaleString()}건</b>${vp ? ` (${vo.ib >= vp.ib ? '+' : '−'}${Math.abs(vo.ib - vp.ib).toLocaleString()})` : ''}</span>`
+      + (vo.alf != null ? `<span>ALF 응대${view === ALL ? '(슬룸)' : ''} <b class="count">${vo.alf.toLocaleString()}건</b></span>` : '');
+    const note = $('#scope-note');
+    note.hidden = view === ALL || view === '슬룸';
+    note.textContent = 'ALF 해결률·처리 비율은 슬룸에만 ALF가 적용되어 있어 이 브랜드에서는 보이지 않습니다. 응답 10건 미만인 CSAT·CES는 판정 대신 "참고"로 표시합니다.';
+    $('#cmp-wrap').hidden = view !== ALL;
+  }
+
+  // ---------- 카드 ----------
+  function renderTiles() {
+    const w = W[sel], p = W[sel - 1], ks = kpisFor(view);
+    $('#tiles').className = 'tiles' + (ks.length === 3 ? ' n3' : '');
+    $('#tiles').innerHTML = ks.map(k => {
+      const x = get(w, k.id), d = diff(x, p && get(p, k.id), k.id);
+      return `<article class="tile">
+        <div class="tile-top"><span class="tile-name" title="${k.desc}">${k.name}</span>${badge(k, x)}</div>
+        ${x.v == null ? `<div class="tile-empty">이번 주 데이터 없음</div>` : `<div class="tile-value">${fmtParts(k, x.v)}</div>`}
+        <div class="tile-n">${scopeTxt(k)}${nTxt(k, x) ? ' · ' + nTxt(k, x) : ''}</div>
+        <div class="tile-meta"><span class="delta ${better(k, d)}">${fmtDelta(k, d)}</span><span>목표 ${tgtTxt(k)}</span></div>
+        <div class="spark">${spark(k)}</div>
+      </article>`;
+    }).join('');
+  }
+
+  function spark(k) {
+    const xs = W.map(w => get(w, k.id).v), Wd = 200, H = 40, pad = 5, ok = xs.filter(v => v != null);
+    if (!ok.length) return '';
+    const lo = Math.min(...ok, k.target), hi = Math.max(...ok, k.target), rng = hi - lo || 1;
+    const x = i => pad + i * (Wd - pad * 2) / (W.length - 1), y = v => pad + (H - pad * 2) * (1 - (v - lo) / rng);
+    let d = '', pen = false;
+    xs.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1); pen = true; });
+    return `<svg viewBox="0 0 ${Wd} ${H}" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="0" x2="${Wd}" y1="${y(k.target)}" y2="${y(k.target)}" stroke="var(--target)" stroke-width="1" vector-effect="non-scaling-stroke" opacity=".7"/>
+      <path d="${d}" fill="none" stroke="var(--axis)" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>`
+      + (xs[sel] != null ? `<i class="spark-dot" style="left:${(x(sel) / Wd * 100).toFixed(2)}%;top:${y(xs[sel]).toFixed(1)}px"></i>` : '');
+  }
+
+  // ---------- 브랜드 비교 ----------
+  function renderCompare() {
+    if (view !== ALL) return;
+    const w = W[sel];
+    $('#cmp').innerHTML = ['csat', 'ces', 'frt'].map(id => {
+      const k = KM[id], all = BR.map(b => ({ b, ...brandVal(w, b, id) })), rows = all.filter(r => r.v != null), none = all.filter(r => r.v == null);
+      const max = Math.max(k.target, ...rows.map(r => r.v)) * (k.unit === 'sec' ? 1.08 : 1);
+      const scale = v => k.unit === 'sec' ? v / max * 100 : v / 5 * 100;   // 점수는 5점 만점 기준 길이
+      const tot = get(w, id);
+      return `<article class="card">
+        <div class="card-head"><span class="card-title">${k.name}</span><span class="card-scope">목표 ${tgtTxt(k)}</span></div>
+        <div class="card-now">${k.scope[ALL]} <b>${fmt(k, tot.v)}</b></div>
+        <div style="margin-top:8px">${rows.map(r => `<div class="cmp-row">
+          <span class="cmp-name" data-b="${r.b}" title="${r.b} 화면 보기">${r.b}</span>
+          <span class="cmp-track">${r.v == null ? '<span class="cmp-none">' + (id === 'frt' ? '상담 없음' : '응답 없음') + '</span>'
+            : `<span class="cmp-bar ${r.ex ? 'ex' : ''}" style="width:${scale(r.v).toFixed(1)}%"></span>`}
+            <span class="cmp-tgt" style="left:${scale(k.target).toFixed(1)}%"></span></span>
+          <span class="cmp-val ${r.v != null && !smallN(k, r) && !pass(k, r.v) ? 'miss' : ''}">${fmt(k, r.v)}<small>${(r.n ?? 0).toLocaleString()}건${smallN(k, r) && r.n ? ' · 참고' : ''}</small></span>
+        </div>`).join('')}${none.length ? `<div class="cmp-empty">${id === 'frt' ? '상담' : '응답'} 없음: ${none.map(r => r.b).join(' · ')}</div>` : ''}</div>
+        ${id === 'ces' ? '<div class="cmp-foot">공식 CES는 슬룸 값입니다. 다른 브랜드는 참고용입니다.</div>' : ''}
+        ${id === 'frt' ? '<div class="cmp-foot">전체 FRT는 상담 건수와 관계없이 브랜드 값을 그대로 평균합니다.</div>' : ''}
+      </article>`;
+    }).join('');
+    $('#cmp').querySelectorAll('.cmp-name').forEach(e => e.addEventListener('click', () => setView(e.dataset.b)));
+  }
+
+  // ---------- 추이 차트 ----------
+  function niceStep(raw) { const p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+  function niceDomain(k, vals) {
+    let lo = Math.min(...vals, k.target), hi = Math.max(...vals, k.target);
+    const span = (hi - lo) || Math.abs(hi) * 0.1 || 1; lo -= span * 0.25; hi += span * 0.25;
+    const step = k.unit === 'sec' ? ([30, 60, 120, 180, 300, 600].find(v => v >= (hi - lo) / 4) || 600) : niceStep((hi - lo) / 4);
+    lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step;
+    if (k.unit === '점') { lo = Math.max(1, lo); hi = Math.min(5, hi); }
+    if (k.unit === '%') hi = Math.min(100, hi);
+    if (k.unit === 'sec') lo = Math.max(0, lo);
+    return [lo, hi, step];
+  }
+  const tickTxt = (k, v) => k.unit === 'sec' ? (v % 60 ? `${Math.floor(v / 60)}분 ${v % 60}초` : `${v / 60}분`) : k.unit === '%' ? `${+v.toFixed(1)}%` : (+v.toFixed(2)).toString();
+
+  function lineChart(el, k) {
+    const box = el.querySelector('.chart'), Wd = Math.max(260, box.clientWidth), H = 190, m = { l: 48, r: 58, t: 14, b: 26 };
+    const pts = W.map(w => get(w, k.id)), n = W.length, vals = pts.map(p => p.v).filter(v => v != null);
+    if (!vals.length) { box.innerHTML = '<p class="sub" style="padding:60px 0;text-align:center">데이터 없음</p>'; return; }
+    const [lo, hi, step] = niceDomain(k, vals);
+    const x = i => m.l + i * (Wd - m.l - m.r) / (n - 1), y = v => m.t + (H - m.t - m.b) * (1 - (v - lo) / (hi - lo));
+    let g = '';
+    for (let v = lo; v <= hi + 1e-9; v += step)
+      g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text class="tick" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${tickTxt(k, v)}</text>`;
+    const every = Wd < 330 ? 2 : 1;
+    W.forEach((w, i) => { if ((n - 1 - i) % every === 0) g += `<text class="tick" x="${x(i)}" y="${H - 6}" text-anchor="middle">${md(w.end)}</text>`; });
+    const ty = y(k.target);
+    g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${ty}" y2="${ty}" stroke="var(--target)" stroke-width="1.5"/>`;
+    const lastY = pts[n - 1].v != null ? y(pts[n - 1].v) : -99;
+    g += `<text class="tgt-label" x="${Wd - m.r + 6}" y="${Math.abs(lastY - ty) < 18 ? ty + (lastY < ty ? 15 : -7) : ty + 4}">목표</text>`;
+    // 값이 없는 주는 선을 끊는다
+    let seg = [], segs = [];
+    pts.forEach((p, i) => { if (p.v == null) { if (seg.length) segs.push(seg); seg = []; } else seg.push([x(i), y(p.v)]); });
+    if (seg.length) segs.push(seg);
+    segs.forEach(s => {
+      const d = s.map((q, i) => (i ? 'L' : 'M') + q[0].toFixed(1) + ',' + q[1].toFixed(1)).join('');
+      if (s.length > 1) g += `<path d="${d}L${s[s.length - 1][0]},${H - m.b}L${s[0][0]},${H - m.b}Z" fill="var(--series-wash)"/>`;
+      g += `<path d="${d}" fill="none" stroke="var(--series)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    });
+    g += `<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--axis)" opacity="0"/>`;
+    pts.forEach((p, i) => {
+      if (p.v == null) return;
+      const cx = x(i), cy = y(p.v), on = i === sel;
+      g += `<circle cx="${cx}" cy="${cy}" r="${on ? 5.5 : 4}" fill="${p.ex ? 'var(--surface)' : 'var(--series)'}" stroke="${p.ex ? 'var(--series)' : 'var(--surface)'}" stroke-width="2"/>`;
+      if (on) g += `<circle cx="${cx}" cy="${cy}" r="9" fill="none" stroke="var(--series)" stroke-width="1.5" opacity=".35"/>`;
+    });
+    if (pts[sel].v != null) {
+      const cx = x(sel), cy = y(pts[sel].v);
+      g += `<text class="end-label" x="${sel === n - 1 ? cx + 9 : cx}" y="${cy + (Math.abs(cy - ty) < 18 && cy >= ty ? 20 : -11)}" text-anchor="${sel === n - 1 ? 'start' : 'middle'}">${fmt(k, pts[sel].v)}</text>`;
+    }
+    const band = (Wd - m.l - m.r) / (n - 1);
+    W.forEach((w, i) => g += `<rect class="hit" data-i="${i}" x="${x(i) - band / 2}" y="0" width="${band}" height="${H}" fill="transparent"/>`);
+    box.innerHTML = `<svg viewBox="0 0 ${Wd} ${H}" height="${H}" role="img" aria-label="${k.name} 최근 ${n}주 추이">${g}</svg><div class="tip"></div>`;
+    hover(box, i => {
+      const w = W[i], c = pts[i], d = diff(c, pts[i - 1], k.id);
+      return [x(i), `<div class="t-week">${wkLabel(w)}${w.note ? ` · ${w.note}` : ''}</div>
+        <div class="t-val">${fmt(k, c.v)}</div>
+        ${nTxt(k, c) ? `<div class="t-row"><span>${nTxt(k, c)}</span></div>` : ''}
+        <div class="t-row"><span>전주 대비</span><span class="delta ${better(k, d)}">${fmtDelta(k, d)}</span></div>
+        <div class="t-row"><span>목표</span><span>${c.v == null ? '—' : smallN(k, c) ? '참고' : pass(k, c.v) ? '달성' : '미달성'}</span></div>
+        ${c.ex ? '<div class="t-sample">예시 값</div>' : ''}`];
+    });
+  }
+
+  function volumeChart(el) {
+    const box = el.querySelector('.chart'), Wd = Math.max(260, box.clientWidth), H = 190, m = { l: 48, r: 12, t: 14, b: 26 }, n = W.length;
+    const vs = W.map(w => volume(w)), showAlf = vs[0].alf != null;
+    const top = Math.max(...vs.map(v => v.ib)), unit = niceStep(top / 4), hi = Math.ceil(top / unit) * unit;
+    const band = (Wd - m.l - m.r) / n, bw = Math.min(16, (band - 10) / (showAlf ? 2 : 1));
+    const y = v => m.t + (H - m.t - m.b) * (1 - v / hi);
+    const fmtK = v => v >= 1000 ? (v / 1000).toFixed(1) + 'K' : String(v);
+    let g = '';
+    for (let v = 0; v <= hi + 1e-9; v += unit) g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text class="tick" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${fmtK(v)}</text>`;
+    const bar = (cx, v, color, ex) => {
+      const t = y(v), h = H - m.b - t, r = Math.min(4, h);
+      const d = `M${cx},${H - m.b}V${t + r}Q${cx},${t} ${cx + r},${t}H${cx + bw - r}Q${cx + bw},${t} ${cx + bw},${t + r}V${H - m.b}Z`;
+      return ex ? `<path d="${d}" fill="var(--surface)" stroke="${color}" stroke-width="1.5"/>` : `<path d="${d}" fill="${color}"/>`;
+    };
+    const every = Wd < 330 ? 2 : 1;
+    vs.forEach((v, i) => {
+      const c = m.l + band * i + band / 2;
+      g += `<g opacity="${i === sel ? 1 : .55}">` + (showAlf ? bar(c - bw - 1, v.ib, 'var(--series)', v.ibEx) + bar(c + 1, v.alf, 'var(--series-2)', v.alfEx) : bar(c - bw / 2, v.ib, 'var(--series)', v.ibEx)) + '</g>';
+      if ((n - 1 - i) % every === 0) g += `<text class="tick" x="${c}" y="${H - 6}" text-anchor="middle">${md(W[i].end)}</text>`;
+      g += `<rect class="hit" data-i="${i}" x="${c - band / 2}" y="0" width="${band}" height="${H}" fill="transparent"/>`;
+    });
+    g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--axis)"/>`;
+    box.innerHTML = `<svg viewBox="0 0 ${Wd} ${H}" height="${H}" role="img" aria-label="주간 상담 수">${g}</svg><div class="tip"></div>`;
+    el.querySelector('.legend').innerHTML = `<span><i style="background:var(--series)"></i>I/B 상담</span>` + (showAlf ? `<span><i style="background:var(--series-2)"></i>ALF 응대${view === ALL ? '(슬룸)' : ''}</span>` : '');
+    hover(box, i => {
+      const v = vs[i], p = vs[i - 1], d = p ? v.ib - p.ib : null;
+      return [m.l + band * i + band / 2, `<div class="t-week">${wkLabel(W[i])}${W[i].note ? ` · ${W[i].note}` : ''}</div>
+        <div class="t-row"><span>I/B 상담</span><b>${v.ib.toLocaleString()}건</b></div>
+        ${showAlf ? `<div class="t-row"><span>ALF 응대</span><b>${v.alf.toLocaleString()}건</b></div>` : ''}
+        <div class="t-row"><span>I/B 전주 대비</span><span>${d == null ? '—' : (d >= 0 ? '+' : '−') + Math.abs(d).toLocaleString()}</span></div>
+        ${v.ibEx ? '<div class="t-sample">예시 값</div>' : ''}`];
+    }, false);
+  }
+
+  function hover(box, content, crosshair = true, click = true) {
+    const svg = box.querySelector('svg'), tip = box.querySelector('.tip'), xh = svg.querySelector('.xh');
+    svg.querySelectorAll('.hit').forEach(r => {
+      r.addEventListener('mouseenter', () => {
+        const [cx, html] = content(+r.dataset.i);
+        tip.innerHTML = html; tip.classList.add('on');
+        const px = cx * box.clientWidth / svg.viewBox.baseVal.width;
+        tip.style.left = Math.min(Math.max(0, px - tip.offsetWidth / 2), box.clientWidth - tip.offsetWidth) + 'px';
+        tip.style.top = '-8px'; tip.style.transform = 'translateY(-100%)';
+        if (crosshair && xh) { xh.setAttribute('x1', cx); xh.setAttribute('x2', cx); xh.setAttribute('opacity', 1); }
+      });
+      r.addEventListener('mouseleave', () => { tip.classList.remove('on'); if (xh) xh.setAttribute('opacity', 0); });
+      if (click) r.addEventListener('click', () => setSel(+r.dataset.i));
+    });
+  }
+
+  function renderCharts() {
+    const w = W[sel], p = W[sel - 1];
+    $('#charts').innerHTML = kpisFor(view).map(k => `<article class="card" data-k="${k.id}">
+        <div class="card-head"><span class="card-title">${k.name}</span><span class="card-scope">${scopeTxt(k)} · 목표 ${tgtTxt(k)}</span></div>
+        <div class="card-now"></div><div class="chart"></div></article>`).join('')
+      + `<article class="card" data-k="volume"><div class="card-head"><span class="card-title">상담 수</span><span class="card-scope">${view === ALL ? '전 브랜드 합계' : view} · 주간 건수</span></div>
+        <div class="legend"></div><div class="chart"></div></article>`;
+    kpisFor(view).forEach(k => {
+      const el = $(`#charts [data-k="${k.id}"]`), x = get(w, k.id), d = diff(x, p && get(p, k.id), k.id);
+      el.querySelector('.card-now').innerHTML = `${wkLabel(w)} <b>${fmt(k, x.v)}</b> <span class="delta ${better(k, d)}">${fmtDelta(k, d)}</span>`;
+      lineChart(el, k);
+    });
+    volumeChart($('#charts [data-k="volume"]'));
+  }
+
+  // ---------- 표 ----------
+  function renderTable() {
+    const ks = kpisFor(view), showAlf = view === ALL || view === '슬룸';
+    let h = `<thead><tr><th>주차 (금 17시 기준)</th>${ks.map(k => `<th>${k.name}<span class="tg">목표 ${tgtTxt(k)}</span></th>`).join('')}<th>I/B 상담</th>${showAlf ? '<th>ALF 응대</th>' : ''}</tr></thead><tbody>`;
+    for (let i = W.length - 1; i >= 0; i--) {
+      const w = W[i], p = W[i - 1], vo = volume(w);
+      h += `<tr data-i="${i}" class="${i === sel ? 'sel' : ''}"><td>${wkLabel(w)}${w.note ? `<span class="wk-note">${w.note}</span>` : ''}</td>`;
+      ks.forEach(k => {
+        const x = get(w, k.id), d = diff(x, p && get(p, k.id), k.id), miss = x.v != null && !smallN(k, x) && !pass(k, x.v);
+        const nn = (k.id === 'csat' || k.id === 'ces') ? ` <span style="color:var(--ink-3);font-size:12px;font-style:normal">(${x.n ?? 0})</span>` : '';
+        h += `<td class="${miss ? 'miss' : ''} ${x.ex ? 'ex' : ''}"><span class="v">${fmt(k, x.v)}</span>${nn}<span class="d ${better(k, d)}">${fmtDelta(k, d)}</span></td>`;
+      });
+      h += `<td class="${vo.ibEx ? 'ex' : ''}">${vo.ib.toLocaleString()}</td>${showAlf ? `<td class="${vo.alfEx ? 'ex' : ''}">${vo.alf.toLocaleString()}</td>` : ''}</tr>`;
+    }
+    $('#table').innerHTML = h + '</tbody>';
+    $('#table').querySelectorAll('tbody tr').forEach(tr => tr.addEventListener('click', () => setSel(+tr.dataset.i)));
+  }
+
+  // ---------- 하위 섹션 공통 ----------
+  const MAIN = D.main_brand || '슬룸';
+  const bsOf = v => v === ALL ? BR : [v];
+  const DF = ['ib', 'agent', 'alf_only', 'alf_in', 'alf', 'alf_solo'];
+  const sumDays = (w, v = view) => w.brands[BR[0]].days.map((d0, i) => {
+    const o = { date: d0.date };
+    DF.forEach(f => o[f] = bsOf(v).reduce((a, b) => a + (w.brands[b].days[i][f] || 0), 0));
+    return o;
+  });
+  const sumF = (w, f, v = view) => bsOf(v).reduce((a, b) => a + (w.brands[b][f] || 0), 0);
+  const dLabel = s => { const d = new Date(s + 'T00:00:00'); return `${d.getMonth() + 1}/${d.getDate()}(${DAY[d.getDay()]})`; };
+  const num = v => v == null ? '—' : v.toLocaleString();
+  const cnt = (a, b) => b == null ? '—' : a === b ? '– 0' : `${a > b ? '▲' : '▼'} ${Math.abs(a - b).toLocaleString()}`;
+  const pct = (a, b) => b ? a / b * 100 : null;
+
+  // 여러 계열 선 그래프 (한 축). series: [{name, color, vals}]
+  function multiLine(box, labels, series, tipTitle) {
+    const Wd = Math.max(280, box.clientWidth), H = 210, m = { l: 44, r: 16, t: 18, b: 26 }, n = labels.length;
+    const top = Math.max(1, ...series.flatMap(s => s.vals)), step = niceStep(top / 4), hi = Math.ceil(top / step) * step;
+    const x = i => m.l + (n === 1 ? 0 : i * (Wd - m.l - m.r) / (n - 1)), y = v => m.t + (H - m.t - m.b) * (1 - v / hi);
+    let g = '';
+    for (let v = 0; v <= hi + 1e-9; v += step)
+      g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text class="tick" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v >= 1000 ? (v / 1000).toFixed(1) + 'K' : v}</text>`;
+    labels.forEach((l, i) => g += `<text class="tick" x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'}">${l}</text>`);
+    g += `<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--axis)" opacity="0"/>`;
+    series.forEach(s => {
+      g += `<path d="${s.vals.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1)).join('')}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+      s.vals.forEach((v, i) => g += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${s.color}" stroke="var(--surface)" stroke-width="2"/>`);
+    });
+    // 최댓값 하나만 값 표시 (첫 계열)
+    const s0 = series[0], im = s0.vals.indexOf(Math.max(...s0.vals));
+    g += `<text class="end-label" x="${x(im)}" y="${y(s0.vals[im]) - 9}" text-anchor="${im === n - 1 ? 'end' : im === 0 ? 'start' : 'middle'}">${s0.vals[im].toLocaleString()}</text>`;
+    const band = n > 1 ? (Wd - m.l - m.r) / (n - 1) : Wd;
+    labels.forEach((_, i) => g += `<rect class="hit" data-i="${i}" x="${x(i) - band / 2}" y="0" width="${band}" height="${H}" fill="transparent"/>`);
+    box.innerHTML = `<svg viewBox="0 0 ${Wd} ${H}" height="${H}" role="img">${g}</svg><div class="tip"></div>`;
+    hover(box, i => [x(i), `<div class="t-week">${tipTitle(i)}</div>` + series.map(s =>
+      `<div class="t-row"><span><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${s.color};margin-right:5px"></i>${s.name}</span><b>${s.vals[i].toLocaleString()}건</b></div>`).join('')], true, false);
+  }
+  const legend = series => series.map(s => `<span><i style="background:${s.color}"></i>${s.name}</span>`).join('');
+
+  // 쌓은 세로 막대 (주별). stacks: [{name, color, vals}] 아래부터
+  function stackedCols(box, labels, stacks, tip) {
+    const Wd = Math.max(280, box.clientWidth), H = 210, m = { l: 44, r: 12, t: 22, b: 26 }, n = labels.length;
+    const tot = labels.map((_, i) => stacks.reduce((a, s) => a + s.vals[i], 0));
+    const step = niceStep(Math.max(1, ...tot) / 4), hi = Math.ceil(Math.max(1, ...tot) / step) * step;
+    const band = (Wd - m.l - m.r) / n, bw = Math.min(28, band * .5), y = v => m.t + (H - m.t - m.b) * (1 - v / hi);
+    let g = '';
+    for (let v = 0; v <= hi + 1e-9; v += step)
+      g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text class="tick" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v >= 1000 ? (v / 1000).toFixed(1) + 'K' : v}</text>`;
+    labels.forEach((l, i) => {
+      const cx = m.l + band * i + band / 2, x0 = cx - bw / 2;
+      let base = 0;
+      g += `<g opacity="${i === sel ? 1 : .6}">`;
+      stacks.forEach((s, j) => {
+        const v = s.vals[i]; if (!v) return;
+        const y1 = y(base + v), y0 = y(base), last = j === stacks.length - 1 || stacks.slice(j + 1).every(t => !t.vals[i]);
+        const h = Math.max(0, y0 - y1 - (j ? 2 : 0)), r = last ? Math.min(4, h) : 0, yt = y1;
+        g += `<path d="M${x0},${yt + h}V${yt + r}${r ? `Q${x0},${yt} ${x0 + r},${yt}H${x0 + bw - r}Q${x0 + bw},${yt} ${x0 + bw},${yt + r}` : `H${x0 + bw}`}V${yt + h}Z" fill="${s.color}"/>`;
+        base += v;
+      });
+      g += `</g><text class="tick" x="${cx}" y="${y(tot[i]) - 6}" text-anchor="middle" style="fill:var(--ink-2);font-weight:650">${tot[i].toLocaleString()}</text>`;
+      g += `<text class="tick" x="${cx}" y="${H - 6}" text-anchor="middle">${l}</text>`;
+      g += `<rect class="hit" data-i="${i}" x="${cx - band / 2}" y="0" width="${band}" height="${H}" fill="transparent"/>`;
+    });
+    g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--axis)"/>`;
+    box.innerHTML = `<svg viewBox="0 0 ${Wd} ${H}" height="${H}" role="img">${g}</svg><div class="tip"></div>`;
+    hover(box, i => [m.l + band * i + band / 2, tip(i)], false);
+  }
+
+  // ---------- ALF 퍼포먼스 ----------
+  const C = { total: 'var(--series)', solved: 'var(--series-3)', agent: 'var(--series-2)' };
+  function renderAlf() {
+    const on = view === ALL || view === MAIN;
+    $('#sec-alf').hidden = !on;
+    document.querySelector('.jump [data-alf]').hidden = !on;
+    if (!on) return;
+    const cur = W[sel].brands[MAIN], prev = W[sel - 1] && W[sel - 1].brands[MAIN];
+    const un = b => b.alf - b.alf_solo, k = KM.alf_rate;
+    const rd = prev ? +(cur.alf_rate - prev.alf_rate).toFixed(2) : null;
+    const stat = (label, color, v, pv, extra = '') => `<div class="stat"><div class="stat-label">${color ? `<i style="background:${color}"></i>` : ''}${label}</div>
+      <div class="stat-value">${num(v)}<small>건</small></div><div class="stat-meta"><span class="delta flat">${cnt(v, pv)}</span>${extra}</div></div>`;
+    $('#alf-stats').innerHTML =
+        stat('ALF 관여 상담', C.total, cur.alf, prev && prev.alf)
+      + stat('ALF 단독 해결', C.solved, cur.alf_solo, prev && prev.alf_solo, '<span>상담사 미배정</span>')
+      + stat('ALF 미해결', C.agent, un(cur), prev && un(prev), '<span>상담사 연결</span>')
+      + `<div class="stat"><div class="stat-label">ALF 해결률</div><div class="stat-value">${+cur.alf_rate.toFixed(2)}<small>%</small></div>
+         <div class="stat-meta"><span class="delta ${better(k, rd)}">${fmtDelta(k, rd)}</span><span>목표 90%</span></div></div>`;
+    const days = cur.days, ser = [
+      { name: 'ALF 관여', color: C.total, vals: days.map(d => d.alf) },
+      { name: 'ALF 해결', color: C.solved, vals: days.map(d => d.alf_solo) },
+      { name: 'ALF 미해결', color: C.agent, vals: days.map(d => d.alf - d.alf_solo) }];
+    $('#alf-day-scope').textContent = wkLabel(W[sel]);
+    $('#alf-day-legend').innerHTML = legend(ser);
+    multiLine($('#alf-day'), days.map(d => dLabel(d.date)), ser, i => `${dLabel(days[i].date)} · 해결률 ${days[i].alf ? (days[i].alf_solo / days[i].alf * 100).toFixed(1) + '%' : '—'}`);
+    const st = [{ name: 'ALF 해결', color: C.solved, vals: W.map(w => w.brands[MAIN].alf_solo) },
+                { name: 'ALF 미해결', color: C.agent, vals: W.map(w => un(w.brands[MAIN])) }];
+    $('#alf-week-legend').innerHTML = legend(st);
+    stackedCols($('#alf-week'), W.map(w => md(w.end)), st, i => { const b = W[i].brands[MAIN];
+      return `<div class="t-week">${wkLabel(W[i])}</div><div class="t-row"><span>ALF 관여</span><b>${num(b.alf)}건</b></div>
+        <div class="t-row"><span>해결</span><b>${num(b.alf_solo)}건</b></div><div class="t-row"><span>미해결</span><b>${num(un(b))}건</b></div>
+        <div class="t-row"><span>해결률</span><b>${+b.alf_rate.toFixed(2)}%</b></div>`; });
+  }
+
+  // ---------- 응대 주체별 I/B ----------
+  function renderAgent() {
+    const days = sumDays(W[sel]), hasAlf = days.some(d => d.alf_in);
+    const ser = [{ name: '전체 I/B', color: C.total, vals: days.map(d => d.ib) },
+                 { name: '상담원', color: C.agent, vals: days.map(d => d.agent) }];
+    if (hasAlf) ser.push({ name: 'ALF', color: C.solved, vals: days.map(d => d.alf_only) });
+    $('#agent-scope').textContent = `${view === ALL ? '전 브랜드 합계' : view} · ${wkLabel(W[sel])}`;
+    $('#agent-legend').innerHTML = legend(ser);
+    multiLine($('#agent-day'), days.map(d => dLabel(d.date)), ser, i => dLabel(days[i].date));
+    const w = W[sel], p = W[sel - 1], ib = sumF(w, 'ib'), ai = sumF(w, 'alf_in'), ag = sumF(w, 'agent'), ao = days.reduce((a, d) => a + d.alf_only, 0);
+    const head = hasAlf ? ['I/B ALF 관여율', pct(ai, ib), '관여함', ai, '관여 안 함', ib - ai] : ['상담원 응대 비율', pct(ag, ib), '상담원 답변', ag, '답변 없음', ib - ag];
+    const prevRate = p ? (hasAlf ? pct(sumF(p, 'alf_in'), sumF(p, 'ib')) : pct(sumF(p, 'agent'), sumF(p, 'ib'))) : null;
+    const dd = prevRate == null || head[1] == null ? null : +(head[1] - prevRate).toFixed(2);
+    $('#agent-rate').innerHTML = `<div class="card-head"><span class="card-title">${head[0]}</span><span class="card-scope">${view === ALL ? '전 브랜드 I/B 중 (ALF는 슬룸만 적용)' : view}</span></div>
+      <div class="stat-value" style="margin-top:12px">${head[1] == null ? '—' : head[1].toFixed(1)}<small>%</small></div>
+      <div class="stat-meta"><span class="delta flat">${dd == null ? '—' : `${dd > 0 ? '▲' : dd < 0 ? '▼' : '–'} ${Math.abs(dd).toFixed(2)}%p`}</span><span>전주 대비</span></div>
+      <div class="meter"><span style="width:${(head[1] || 0).toFixed(1)}%"></span></div>
+      <div class="split"><span>${head[2]} <b>${num(head[3])}</b></span><span>${head[4]} <b>${num(head[5])}</b></span></div>
+      <div class="rate-rows">
+        <div class="rate-row"><span>I/B 인입호</span><b>${num(ib)}건</b></div>
+        <div class="rate-row"><span>상담원 응대</span><b>${num(ag)}건 · ${ib ? (ag / ib * 100).toFixed(1) : '—'}%</b></div>
+        ${hasAlf ? `<div class="rate-row"><span>ALF 단독 처리</span><b>${num(ao)}건 · ${ib ? (ao / ib * 100).toFixed(1) : '—'}%</b></div>` : ''}
+      </div>`;
+  }
+
+  // ---------- 상담 트래픽 (요일 × 시간) ----------
+  const RAMP = ['#cde2fb', '#b7d3f6', '#9ec5f4', '#86b6ef', '#6da7ec', '#5598e7', '#3987e5', '#2a78d6', '#256abf', '#1c5cab', '#184f95', '#104281'];
+  let heatMode = 'ib';
+  function renderTraffic() {
+    const f = heatMode === 'ib' ? 'heat_ib' : 'heat_all', M = Array.from({ length: 7 }, () => Array(24).fill(0));
+    bsOf(view).forEach(b => W[sel].brands[b][f].forEach((row, d) => row.forEach((v, h) => M[d][h] += v)));
+    const max = Math.max(1, ...M.flat()), dark = isDark(), ramp = dark ? [...RAMP].reverse() : RAMP;
+    const cell = v => { if (!v) return ['', 0]; const i = Math.min(ramp.length - 1, Math.floor(v / max * (ramp.length - 1) + .5)); return [ramp[i], i]; };
+    let h = '<span></span>' + Array.from({ length: 24 }, (_, i) => `<span class="hh">${i}</span>`).join('');
+    ['월', '화', '수', '목', '금', '토', '일'].forEach((dn, d) => {
+      h += `<span class="dd">${dn}</span>`;
+      M[d].forEach((v, hr) => {
+        const [bg, i] = cell(v), ink = !v ? '' : (dark ? (i >= 6 ? '#0b0b0b' : '#ffffff') : (i >= 6 ? '#ffffff' : '#0b0b0b'));
+        h += `<span class="c ${v ? '' : 'z'}" title="${dn}요일 ${hr}시 · ${v}건" style="${v ? `background:${bg};color:${ink}` : 'background:color-mix(in srgb, var(--grid) 45%, transparent)'}">${v || '·'}</span>`;
+      });
+    });
+    $('#heat').innerHTML = h;
+    $('#heat-title').textContent = (heatMode === 'ib' ? '시간대별 I/B 인입호' : '시간대별 인입 (포기·비운영 포함)') + ` · ${view === ALL ? '전 브랜드' : view} · ${wkLabel(W[sel])}`;
+    $('#heat-legend').innerHTML = `<span>0</span><span class="bar" style="background:linear-gradient(90deg, ${ramp[0]}, ${ramp[ramp.length - 1]})"></span><span>${max}</span>`;
+    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.h === heatMode));
+  }
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { heatMode = b.dataset.h; renderTraffic(); }));
+
+  // ---------- 상담 태그 TOP 10 ----------
+  function renderTags() {
+    const brand = view === ALL ? MAIN : view, cur = W[sel].brands[brand], prev = W[sel - 1] && W[sel - 1].brands[brand];
+    const top = Object.entries(cur.tags).slice(0, 10), max = top.length ? top[0][1] : 1;
+    $('#tags-sub').textContent = `${view === ALL ? `전체 화면은 ${MAIN} 기준입니다. ` : ''}${brand} · 상담사가 배정된 상담 ${num(cur.tag_base)}건 기준 (O/B 제외). 한 상담에 태그가 여럿이면 태그마다 셉니다. 비중 = 태그 건수 ÷ 배정 상담 수.`;
+    if (!top.length) { $('#tags').innerHTML = '<p class="sub" style="padding:24px 0;text-align:center">이 주에 태그가 달린 상담이 없습니다.</p>'; return; }
+    $('#tags').innerHTML = `<div class="tag-row head"><span></span><span>상담 태그</span><span class="tag-track"></span><span class="tag-num">건수</span><span class="tag-share">비중</span><span class="tag-d">전주 대비</span></div>`
+      + top.map(([t, v], i) => {
+        const pv = prev ? prev.tags[t] : undefined, d = pv == null ? null : v - pv;
+        return `<div class="tag-row"><span class="tag-rank">${i + 1}</span><span class="tag-name" title="${t}">${t}</span>
+          <span class="tag-track"><div class="tag-bar" style="width:${(v / max * 100).toFixed(1)}%"></div></span>
+          <span class="tag-num">${v.toLocaleString()}</span><span class="tag-share">${cur.tag_base ? (v / cur.tag_base * 100).toFixed(1) + '%' : '—'}</span>
+          <span class="tag-d ${d == null ? 'flat' : d > 0 ? 'up' : d < 0 ? 'down' : 'flat'}">${!prev ? '—' : d == null ? '<span class="tag-new">신규</span>' : cnt(v, pv)}</span></div>`;
+      }).join('');
+  }
+
+  function syncHash() { history.replaceState(null, '', `#brand=${encodeURIComponent(view)}&week=${W[sel].end}`); }
+  function setSel(i) { sel = i; $('#week').value = i; render(); }
+  function setView(b) { view = b; render(); }
+  const renderVisuals = () => { renderCharts(); renderAlf(); renderAgent(); renderTraffic(); };
+  function render() { renderHead(); renderTiles(); renderCompare(); renderVisuals(); renderTags(); renderTable(); syncHash(); }
+
+  $('#week').value = sel;
+  $('#week').addEventListener('change', e => setSel(+e.target.value));
+
+  const root = document.documentElement;
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const syncBtn = () => $('#theme').textContent = isDark() ? '밝은 화면' : '어두운 화면';
+  try { const t = localStorage.getItem('cx-theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  $('#theme').addEventListener('click', () => {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    renderTraffic();
+    try { localStorage.setItem('cx-theme', root.dataset.theme); } catch (e) {}
+    syncBtn();
+  });
+  syncBtn();
+
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(renderVisuals, 120); });
+  render();
+})();
+</script>
+</body>
+</html>
