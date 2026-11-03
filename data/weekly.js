@@ -1,6 +1,6 @@
 // 주간 실적 데이터 (금 17:00 ~ 금 17:00). scripts/collect_weekly.py 가 만든다. 직접 고치지 않는다.
 window.WEEKLY = {
- "generated_at": "2026-11-03T18:02:47+09:00",
+ "generated_at": "2026-11-03T18:36:11+09:00",
  "basis": "CX_주간실적_집계기준.md v2.1",
  "main_brand": "슬룸",
  "brands": [
@@ -492,6 +492,130 @@ window.WEEKLY = {
       "반품/반품철회": 3,
       "100프로환불이벤트/문의(리빙전자)": 3,
       "제품/구성품문의": 3
+     },
+     "low_csat_n": 27,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 13,
+      "불량/불량문의": 6,
+      "유상AS/유상AS신청": 3,
+      "ALF미해결": 2,
+      "재불량": 1,
+      "100프로환불이벤트/문의(리빙전자)": 1,
+      "ALF오류": 1,
+      "Critical_Keyword": 1,
+      "불량/불량반출": 1,
+      "제품/사용법": 1,
+      "배송/오배송": 1,
+      "반품/회수재신청": 1
+     },
+     "task_chats": 343,
+     "tasks": {
+      "44340": {
+       "chats": 160,
+       "runs": 160,
+       "solo": 158
+      },
+      "25909": {
+       "chats": 63,
+       "runs": 64,
+       "solo": 43
+      },
+      "131258": {
+       "chats": 46,
+       "runs": 46,
+       "solo": 20
+      },
+      "277030": {
+       "chats": 15,
+       "runs": 15,
+       "solo": 15
+      },
+      "276763": {
+       "chats": 10,
+       "runs": 10,
+       "solo": 10
+      },
+      "23929": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 7
+      },
+      "276840": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 5
+      },
+      "45949": {
+       "chats": 6,
+       "runs": 6,
+       "solo": 2
+      },
+      "13874": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "13871": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "13862": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "122673": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 1
+      },
+      "51087": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 0
+      },
+      "127202": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 0
+      },
+      "2291": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 0
+      },
+      "143752": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 1
+      },
+      "120955": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "265895": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "46031": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "145084": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "145599": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      }
      }
     },
     "닥터맨즈": {
@@ -943,7 +1067,10 @@ window.WEEKLY = {
      "tags": {
       "배송/미배송": 1,
       "주문/주문내역확인": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 1,
@@ -1391,7 +1518,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 43,
@@ -1853,7 +1983,10 @@ window.WEEKLY = {
       "유상AS/유상AS안내": 1,
       "반품/반품신청": 1,
       "유상AS/유상AS신청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "셀올로지": {
      "ib": 23,
@@ -2313,7 +2446,10 @@ window.WEEKLY = {
       "배송/주소변경": 1,
       "유상AS/유상AS문의": 1,
       "쿠폰/쿠폰사용방법": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 5,
@@ -2764,7 +2900,10 @@ window.WEEKLY = {
      "tags": {
       "주문/주문취소": 1,
       "배송/배송일정": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 125,
@@ -3229,7 +3368,10 @@ window.WEEKLY = {
       "교환/회수지변경": 1,
       "기타/기타": 1,
       "제품/가격,주문방법": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "와이브닝": {
      "ib": 0,
@@ -3677,7 +3819,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 3,
@@ -4127,7 +4272,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/가격,주문방법": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 3,
@@ -4579,7 +4727,10 @@ window.WEEKLY = {
       "배송/오배송": 1,
       "반품/회수재신청": 1,
       "불량/불량확정": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -5059,6 +5210,137 @@ window.WEEKLY = {
       "전화구매콜백": 5,
       "배송/구성품누락": 5,
       "유상AS/유상AS문의": 5
+     },
+     "low_csat_n": 26,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 11,
+      "100프로환불이벤트/문의(리빙전자)": 4,
+      "불량/불량문의": 2,
+      "유상AS/유상AS안내": 1,
+      "기타/중복문의": 1,
+      "이벤트/이용방법,기간": 1,
+      "배송/오배송": 1,
+      "ALF미해결": 1,
+      "반품/회수재신청": 1,
+      "교환/교환현황확인": 1,
+      "반품/반품신청": 1,
+      "태스크미해결": 1,
+      "반품/반품현황확인": 1,
+      "유상AS/유상AS문의": 1
+     },
+     "task_chats": 405,
+     "tasks": {
+      "44340": {
+       "chats": 150,
+       "runs": 150,
+       "solo": 148
+      },
+      "131258": {
+       "chats": 79,
+       "runs": 80,
+       "solo": 42
+      },
+      "25909": {
+       "chats": 60,
+       "runs": 62,
+       "solo": 37
+      },
+      "277030": {
+       "chats": 29,
+       "runs": 29,
+       "solo": 27
+      },
+      "23929": {
+       "chats": 11,
+       "runs": 11,
+       "solo": 5
+      },
+      "276763": {
+       "chats": 11,
+       "runs": 11,
+       "solo": 11
+      },
+      "45949": {
+       "chats": 10,
+       "runs": 10,
+       "solo": 2
+      },
+      "276840": {
+       "chats": 10,
+       "runs": 10,
+       "solo": 10
+      },
+      "51087": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 0
+      },
+      "122673": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 5
+      },
+      "145599": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "13871": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "265895": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "145084": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "54454": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 1
+      },
+      "46031": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 0
+      },
+      "13874": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "127202": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 2
+      },
+      "120955": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "2291": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      },
+      "276907": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "10233": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      }
      }
     },
     "닥터맨즈": {
@@ -5509,7 +5791,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 1,
@@ -5957,7 +6242,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 43,
@@ -6414,7 +6702,10 @@ window.WEEKLY = {
       "1차지연": 1,
       "유상AS/유상AS안내": 1,
       "결제취소/계좌환불": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "셀올로지": {
      "ib": 13,
@@ -6868,7 +7159,10 @@ window.WEEKLY = {
       "주문/주문내역확인": 2,
       "대외문의/마케팅,대행사": 2,
       "기타/무응답": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 4,
@@ -7318,7 +7612,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/가격,주문방법": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 87,
@@ -7780,6 +8077,11 @@ window.WEEKLY = {
       "이벤트/이용방법,기간": 1,
       "기타/중복문의": 1,
       "유상AS/유상AS신청": 1
+     },
+     "low_csat_n": 1,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "반품/반품현황확인": 1
      }
     },
     "와이브닝": {
@@ -8230,7 +8532,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "반품/반품신청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 0,
@@ -8678,7 +8983,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 0,
@@ -9126,7 +9434,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -9606,6 +9917,117 @@ window.WEEKLY = {
       "재불량": 2,
       "주문/주문취소": 2,
       "전화구매콜백": 1
+     },
+     "low_csat_n": 10,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 5,
+      "반품/반품신청": 3,
+      "유상AS/유상AS신청": 1,
+      "불량/불량문의": 1
+     },
+     "task_chats": 298,
+     "tasks": {
+      "44340": {
+       "chats": 114,
+       "runs": 114,
+       "solo": 114
+      },
+      "25909": {
+       "chats": 53,
+       "runs": 53,
+       "solo": 41
+      },
+      "131258": {
+       "chats": 43,
+       "runs": 43,
+       "solo": 14
+      },
+      "122673": {
+       "chats": 14,
+       "runs": 14,
+       "solo": 2
+      },
+      "23929": {
+       "chats": 12,
+       "runs": 12,
+       "solo": 8
+      },
+      "277030": {
+       "chats": 12,
+       "runs": 12,
+       "solo": 12
+      },
+      "13871": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 9
+      },
+      "51087": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 1
+      },
+      "145084": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 8
+      },
+      "276763": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "127202": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 1
+      },
+      "46031": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 1
+      },
+      "2291": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 0
+      },
+      "145599": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 2
+      },
+      "276840": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 1
+      },
+      "120955": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 2
+      },
+      "10233": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "265895": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "13874": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "54454": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      }
      }
     },
     "닥터맨즈": {
@@ -10057,7 +10479,10 @@ window.WEEKLY = {
      "tags": {
       "기타/기타": 2,
       "기타/중복문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 0,
@@ -10505,7 +10930,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 37,
@@ -10964,7 +11392,10 @@ window.WEEKLY = {
       "반품/반품현황확인": 1,
       "주문/주문취소": 1,
       "결제취소/계좌환불": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "셀올로지": {
      "ib": 20,
@@ -11420,6 +11851,11 @@ window.WEEKLY = {
       "쿠폰/쿠폰사용방법": 1,
       "제품/구성품문의": 1,
       "제품/기타문의": 1
+     },
+     "low_csat_n": 1,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "멤버십/멤버십혜택": 1
      }
     },
     "심플리케어": {
@@ -11870,7 +12306,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 71,
@@ -12330,6 +12769,12 @@ window.WEEKLY = {
       "유상AS/유상AS신청": 1,
       "배송/오배송": 1,
       "반품/반품신청": 1
+     },
+     "low_csat_n": 2,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "반품/반품현황확인": 1,
+      "불량/불량확정": 1
      }
     },
     "와이브닝": {
@@ -12778,7 +13223,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 0,
@@ -13226,7 +13674,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 0,
@@ -13674,7 +14125,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -14154,6 +14608,141 @@ window.WEEKLY = {
       "불량/불량반출": 4,
       "전화구매콜백": 4,
       "반품/반품가능여부확인": 3
+     },
+     "low_csat_n": 28,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 12,
+      "반품/반품신청": 3,
+      "교환/교환현황확인": 2,
+      "100프로환불이벤트/문의(리빙전자)": 2,
+      "유상AS/유상AS신청": 1,
+      "반품/반품가능여부확인": 1,
+      "주문/취소후배송": 1,
+      "유상AS/유상AS문의": 1,
+      "불량/불량문의": 1,
+      "유상AS/유상AS안내": 1,
+      "반품/회수재신청": 1,
+      "기타/중복문의": 1,
+      "불량/불량반출": 1
+     },
+     "task_chats": 416,
+     "tasks": {
+      "44340": {
+       "chats": 155,
+       "runs": 155,
+       "solo": 155
+      },
+      "25909": {
+       "chats": 70,
+       "runs": 72,
+       "solo": 54
+      },
+      "131258": {
+       "chats": 62,
+       "runs": 62,
+       "solo": 27
+      },
+      "277030": {
+       "chats": 29,
+       "runs": 29,
+       "solo": 29
+      },
+      "276763": {
+       "chats": 16,
+       "runs": 16,
+       "solo": 16
+      },
+      "2291": {
+       "chats": 14,
+       "runs": 14,
+       "solo": 2
+      },
+      "23929": {
+       "chats": 11,
+       "runs": 12,
+       "solo": 6
+      },
+      "51087": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 0
+      },
+      "54454": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 6
+      },
+      "145599": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "145084": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "276840": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "13871": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "122673": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 1
+      },
+      "300128": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "45949": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 1
+      },
+      "143752": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "265895": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "46031": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 1
+      },
+      "13874": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 2
+      },
+      "127202": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "13862": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      },
+      "120955": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      }
      }
     },
     "닥터맨즈": {
@@ -14605,7 +15194,10 @@ window.WEEKLY = {
      "tags": {
       "불량/불량확정": 1,
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 1,
@@ -15053,7 +15645,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 36,
@@ -15512,7 +16107,10 @@ window.WEEKLY = {
       "기타/중복문의": 1,
       "유상AS/유상AS신청": 1,
       "교환/회수재신청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "셀올로지": {
      "ib": 14,
@@ -15970,7 +16568,10 @@ window.WEEKLY = {
       "주문/취소후배송": 1,
       "주문/주문내역확인": 1,
       "주문/주문취소": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 6,
@@ -16423,7 +17024,10 @@ window.WEEKLY = {
       "주문/주문내역확인": 1,
       "교환/교환신청방법": 1,
       "배송/배송일정": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 110,
@@ -16888,6 +17492,12 @@ window.WEEKLY = {
       "반품/반품현황확인": 1,
       "기타/중복문의": 1,
       "기타/기타": 1
+     },
+     "low_csat_n": 2,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 1,
+      "교환/교환현황확인": 1
      }
     },
     "와이브닝": {
@@ -17338,7 +17948,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 1,
@@ -17786,7 +18399,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 3,
@@ -18238,7 +18854,10 @@ window.WEEKLY = {
       "불량/불량문의": 1,
       "불량/불량확정": 1,
       "기타/중복문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -18718,6 +19337,151 @@ window.WEEKLY = {
       "제품/사용법": 5,
       "유상AS/유상AS입금확인요청": 4,
       "100프로환불이벤트/기간내접수(리빙전자)": 4
+     },
+     "low_csat_n": 29,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 14,
+      "태스크오류": 4,
+      "불량/불량문의": 2,
+      "교환/회수재신청": 2,
+      "배송/배송일정": 2,
+      "기타/중복문의": 2,
+      "반품/반품철회": 1,
+      "반품/반품현황확인": 1,
+      "유상AS/유상AS안내": 1,
+      "유상AS/유상AS신청": 1,
+      "100프로환불이벤트/문의(리빙전자)": 1,
+      "제품/사용법": 1,
+      "반품/반품신청": 1
+     },
+     "task_chats": 441,
+     "tasks": {
+      "44340": {
+       "chats": 143,
+       "runs": 143,
+       "solo": 135
+      },
+      "25909": {
+       "chats": 110,
+       "runs": 118,
+       "solo": 81
+      },
+      "131258": {
+       "chats": 38,
+       "runs": 39,
+       "solo": 17
+      },
+      "277030": {
+       "chats": 26,
+       "runs": 26,
+       "solo": 26
+      },
+      "145084": {
+       "chats": 18,
+       "runs": 18,
+       "solo": 18
+      },
+      "276763": {
+       "chats": 13,
+       "runs": 14,
+       "solo": 13
+      },
+      "13871": {
+       "chats": 12,
+       "runs": 12,
+       "solo": 11
+      },
+      "305970": {
+       "chats": 12,
+       "runs": 14,
+       "solo": 5
+      },
+      "122673": {
+       "chats": 9,
+       "runs": 10,
+       "solo": 2
+      },
+      "127202": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 6
+      },
+      "2291": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 0
+      },
+      "51087": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 2
+      },
+      "45949": {
+       "chats": 6,
+       "runs": 6,
+       "solo": 2
+      },
+      "276840": {
+       "chats": 6,
+       "runs": 6,
+       "solo": 6
+      },
+      "13874": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "23929": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 3
+      },
+      "145599": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "306760": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 0
+      },
+      "306762": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 0
+      },
+      "305926": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "54454": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "46031": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      },
+      "276907": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "306750": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      },
+      "306759": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      }
      }
     },
     "닥터맨즈": {
@@ -19168,7 +19932,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "기타/기타": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 0,
@@ -19616,7 +20383,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 49,
@@ -20080,7 +20850,10 @@ window.WEEKLY = {
       "불량/불량문의": 1,
       "유상AS/유상AS신청": 1,
       "반품/반품신청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "셀올로지": {
      "ib": 9,
@@ -20532,7 +21305,10 @@ window.WEEKLY = {
       "기타/무응답": 3,
       "반품/회수재신청": 1,
       "기타/기타": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 3,
@@ -20983,7 +21759,10 @@ window.WEEKLY = {
      "tags": {
       "무통장입금/미입금취소": 2,
       "무통장입금/입금확인요청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 100,
@@ -21440,7 +22219,10 @@ window.WEEKLY = {
       "기타/기타": 2,
       "기타/중복문의": 1,
       "유상AS/유상AS안내": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "와이브닝": {
      "ib": 0,
@@ -21888,7 +22670,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 0,
@@ -22336,7 +23121,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 0,
@@ -22784,7 +23572,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -23264,6 +24055,144 @@ window.WEEKLY = {
       "배송/배송지연": 6,
       "유상AS/유상AS문의": 6,
       "교환/교환현황확인": 5
+     },
+     "low_csat_n": 29,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 15,
+      "배송/구성품누락": 3,
+      "반품/반품현황확인": 2,
+      "반품/반품신청": 2,
+      "유상AS/유상AS입금확인요청": 1,
+      "반품/회수재신청": 1,
+      "100프로환불이벤트/문의(리빙전자)": 1,
+      "교환/교환현황확인": 1,
+      "불량/불량문의": 1,
+      "유상AS/유상AS신청": 1,
+      "반품/반품가능여부확인": 1
+     },
+     "task_chats": 594,
+     "tasks": {
+      "44340": {
+       "chats": 155,
+       "runs": 155,
+       "solo": 155
+      },
+      "25909": {
+       "chats": 125,
+       "runs": 140,
+       "solo": 96
+      },
+      "305970": {
+       "chats": 88,
+       "runs": 96,
+       "solo": 49
+      },
+      "145084": {
+       "chats": 40,
+       "runs": 40,
+       "solo": 39
+      },
+      "277030": {
+       "chats": 35,
+       "runs": 38,
+       "solo": 35
+      },
+      "306760": {
+       "chats": 26,
+       "runs": 26,
+       "solo": 12
+      },
+      "276840": {
+       "chats": 24,
+       "runs": 24,
+       "solo": 23
+      },
+      "2291": {
+       "chats": 20,
+       "runs": 20,
+       "solo": 1
+      },
+      "306750": {
+       "chats": 15,
+       "runs": 15,
+       "solo": 4
+      },
+      "276763": {
+       "chats": 15,
+       "runs": 15,
+       "solo": 15
+      },
+      "306762": {
+       "chats": 14,
+       "runs": 14,
+       "solo": 4
+      },
+      "51087": {
+       "chats": 10,
+       "runs": 10,
+       "solo": 1
+      },
+      "127202": {
+       "chats": 6,
+       "runs": 6,
+       "solo": 3
+      },
+      "145599": {
+       "chats": 6,
+       "runs": 6,
+       "solo": 6
+      },
+      "13871": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "307915": {
+       "chats": 5,
+       "runs": 6,
+       "solo": 3
+      },
+      "54454": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "307914": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 3
+      },
+      "305926": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "265895": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 2
+      },
+      "306752": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 1
+      },
+      "13874": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "143752": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "13862": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      }
      }
     },
     "닥터맨즈": {
@@ -23714,7 +24643,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 0,
@@ -24162,7 +25094,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 58,
@@ -24626,7 +25561,10 @@ window.WEEKLY = {
       "1차지연": 1,
       "반품/반품현황확인": 1,
       "반품/회수재신청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "셀올로지": {
      "ib": 12,
@@ -25083,7 +26021,10 @@ window.WEEKLY = {
       "제품/기타문의": 1,
       "2차지연": 1,
       "무통장입금/미입금취소": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 10,
@@ -25535,7 +26476,10 @@ window.WEEKLY = {
       "배송/배송일정": 3,
       "주문/주문내역확인": 1,
       "2차지연": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 89,
@@ -25993,7 +26937,10 @@ window.WEEKLY = {
       "반품/반품현황확인": 1,
       "2차지연": 1,
       "재불량": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "와이브닝": {
      "ib": 1,
@@ -26443,7 +27390,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 1,
@@ -26891,7 +27841,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 1,
@@ -27341,7 +28294,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "유상AS/유상AS문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -27821,6 +28777,143 @@ window.WEEKLY = {
       "반품/반품철회": 6,
       "배송/배송지연": 6,
       "유상AS/유상AS문의": 5
+     },
+     "low_csat_n": 26,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 13,
+      "반품/회수재신청": 2,
+      "100프로환불이벤트/문의(리빙전자)": 2,
+      "반품/반품신청": 2,
+      "유상AS/유상AS신청": 2,
+      "유상AS/유상AS문의": 1,
+      "주문/주문취소": 1,
+      "유상AS/유상AS안내": 1,
+      "불량/불량문의": 1,
+      "반품/반품현황확인": 1
+     },
+     "task_chats": 579,
+     "tasks": {
+      "44340": {
+       "chats": 168,
+       "runs": 168,
+       "solo": 167
+      },
+      "25909": {
+       "chats": 113,
+       "runs": 122,
+       "solo": 79
+      },
+      "145084": {
+       "chats": 56,
+       "runs": 56,
+       "solo": 56
+      },
+      "305970": {
+       "chats": 51,
+       "runs": 53,
+       "solo": 25
+      },
+      "277030": {
+       "chats": 34,
+       "runs": 37,
+       "solo": 32
+      },
+      "306760": {
+       "chats": 26,
+       "runs": 26,
+       "solo": 14
+      },
+      "306750": {
+       "chats": 20,
+       "runs": 20,
+       "solo": 5
+      },
+      "276763": {
+       "chats": 17,
+       "runs": 17,
+       "solo": 17
+      },
+      "276840": {
+       "chats": 14,
+       "runs": 14,
+       "solo": 13
+      },
+      "306762": {
+       "chats": 13,
+       "runs": 13,
+       "solo": 3
+      },
+      "13871": {
+       "chats": 12,
+       "runs": 13,
+       "solo": 12
+      },
+      "127202": {
+       "chats": 10,
+       "runs": 10,
+       "solo": 5
+      },
+      "13874": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 8
+      },
+      "145599": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 9
+      },
+      "51087": {
+       "chats": 6,
+       "runs": 6,
+       "solo": 1
+      },
+      "2291": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 0
+      },
+      "13862": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "305926": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 3
+      },
+      "306752": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 1
+      },
+      "265895": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "307914": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "307915": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 2
+      },
+      "276907": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 3
+      },
+      "306759": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 0
+      }
      }
     },
     "닥터맨즈": {
@@ -28269,7 +29362,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 2,
@@ -28717,7 +29813,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 40,
@@ -29181,6 +30280,11 @@ window.WEEKLY = {
       "주문/주문취소": 1,
       "주문/주문내역확인": 1,
       "2차지연": 1
+     },
+     "low_csat_n": 1,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "반품/회수재신청": 1
      }
     },
     "셀올로지": {
@@ -29636,7 +30740,10 @@ window.WEEKLY = {
       "배송/미배송": 1,
       "반품/반품현황확인": 1,
       "제품/기타문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 3,
@@ -30087,7 +31194,10 @@ window.WEEKLY = {
      "tags": {
       "배송/배송일정": 1,
       "대외문의/마케팅,대행사": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 98,
@@ -30546,6 +31656,11 @@ window.WEEKLY = {
       "2차지연": 1,
       "제품/구성품문의": 1,
       "교환/회수재신청": 1
+     },
+     "low_csat_n": 1,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 1
      }
     },
     "와이브닝": {
@@ -30994,7 +32109,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 1,
@@ -31442,7 +32560,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 1,
@@ -31892,7 +33013,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "불량/불량확정": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   },
@@ -32372,6 +33496,144 @@ window.WEEKLY = {
       "주문/취소후배송": 5,
       "반품/반품가능여부확인": 4,
       "제품/사용법": 4
+     },
+     "low_csat_n": 29,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량확정": 6,
+      "반품/반품신청": 5,
+      "불량/불량문의": 5,
+      "반품/반품현황확인": 5,
+      "반품/회수재신청": 2,
+      "100프로환불이벤트/문의(리빙전자)": 1,
+      "유상AS/유상AS신청": 1,
+      "유상AS/유상AS문의": 1,
+      "배송/배송일정": 1,
+      "제품/가격,주문방법": 1,
+      "배송/오배송": 1
+     },
+     "task_chats": 510,
+     "tasks": {
+      "44340": {
+       "chats": 161,
+       "runs": 161,
+       "solo": 158
+      },
+      "25909": {
+       "chats": 88,
+       "runs": 99,
+       "solo": 55
+      },
+      "305970": {
+       "chats": 48,
+       "runs": 49,
+       "solo": 12
+      },
+      "145084": {
+       "chats": 47,
+       "runs": 47,
+       "solo": 47
+      },
+      "277030": {
+       "chats": 24,
+       "runs": 25,
+       "solo": 24
+      },
+      "306750": {
+       "chats": 20,
+       "runs": 20,
+       "solo": 5
+      },
+      "306762": {
+       "chats": 18,
+       "runs": 18,
+       "solo": 5
+      },
+      "276763": {
+       "chats": 15,
+       "runs": 17,
+       "solo": 15
+      },
+      "306760": {
+       "chats": 12,
+       "runs": 13,
+       "solo": 9
+      },
+      "305926": {
+       "chats": 12,
+       "runs": 12,
+       "solo": 11
+      },
+      "276840": {
+       "chats": 11,
+       "runs": 11,
+       "solo": 11
+      },
+      "313797": {
+       "chats": 9,
+       "runs": 9,
+       "solo": 7
+      },
+      "13871": {
+       "chats": 8,
+       "runs": 8,
+       "solo": 8
+      },
+      "51087": {
+       "chats": 7,
+       "runs": 7,
+       "solo": 3
+      },
+      "127202": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 2
+      },
+      "13874": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 5
+      },
+      "2291": {
+       "chats": 5,
+       "runs": 5,
+       "solo": 0
+      },
+      "306752": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 1
+      },
+      "13862": {
+       "chats": 4,
+       "runs": 4,
+       "solo": 4
+      },
+      "306759": {
+       "chats": 3,
+       "runs": 3,
+       "solo": 1
+      },
+      "307915": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 1
+      },
+      "307914": {
+       "chats": 2,
+       "runs": 2,
+       "solo": 1
+      },
+      "265895": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      },
+      "145599": {
+       "chats": 1,
+       "runs": 1,
+       "solo": 1
+      }
      }
     },
     "닥터맨즈": {
@@ -32820,7 +34082,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "닥터아망": {
      "ib": 0,
@@ -33268,7 +34533,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "빌바": {
      "ib": 109,
@@ -33736,6 +35004,11 @@ window.WEEKLY = {
       "배송/주소변경": 1,
       "주문/주문내역확인": 1,
       "결제취소/카드승인취소": 1
+     },
+     "low_csat_n": 1,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "제품/사용법": 1
      }
     },
     "셀올로지": {
@@ -34186,7 +35459,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "반품/회수재신청": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "심플리케어": {
      "ib": 1,
@@ -34634,7 +35910,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "얼라인랩": {
      "ib": 110,
@@ -35098,6 +36377,12 @@ window.WEEKLY = {
       "배송/배송일정": 1,
       "반품/반품신청": 1,
       "이벤트/이용방법,기간": 1
+     },
+     "low_csat_n": 2,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {
+      "불량/불량문의": 1,
+      "불량/불량확정": 1
      }
     },
     "와이브닝": {
@@ -35546,7 +36831,10 @@ window.WEEKLY = {
       ]
      ],
      "tag_base": 0,
-     "tags": {}
+     "tags": {},
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "코코다움": {
      "ib": 2,
@@ -35996,7 +37284,10 @@ window.WEEKLY = {
      "tag_base": 1,
      "tags": {
       "불량/불량문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     },
     "12 o'clock": {
      "ib": 5,
@@ -36447,9 +37738,66 @@ window.WEEKLY = {
      "tags": {
       "불량/불량확정": 3,
       "불량/불량문의": 1
-     }
+     },
+     "low_csat_n": 0,
+     "low_csat_untagged": 0,
+     "low_csat_tags": {}
     }
    }
   }
- ]
+ ],
+ "task_names": {
+  "_설명": "태스크 ID → 이름 (2026-11-03 사용자 제공 대조표). 채널톡 API는 ID만 주므로 새 태스크가 생기면 여기에 추가한다. 없는 ID는 화면에 \"태스크 #ID\"로 나온다.",
+  "313797": "반품 임의발송 정보 수집",
+  "307915": "[신] 교환 요청/접수 (EMP 전환)",
+  "307914": "교환/반품 반품배송비 입금 확인 (지시문 정비)",
+  "306762": "[신] 주문 취소 (EMP 전환)",
+  "306760": "[신] 배송_구성품·사은품 누락 (EMP 전환)",
+  "306759": "[신] 배송_배송중 파손 (EMP 전환)",
+  "306752": "[신] 배송 정보 변경 요청 (EMP 전환)",
+  "306750": "[신] 배송 일정/오배송/미배송 (EMP 전환)",
+  "305970": "[신] 반품_최종",
+  "305926": "[신] 교환 재출고 송장번호 조회",
+  "305483": "반품/교환 진행 상황 문의 백업",
+  "305482": "구매 후 제품 문의_문제O 백업",
+  "300128": "[전화] 주문취소 후 배송건-수거신청",
+  "277030": "[전화] 반품/교환 진행 상황 문의",
+  "276907": "[전화] 배송 정보 변경 (자사몰)",
+  "276840": "[전화] 주문 취소 (자사몰)",
+  "276763": "[전화] 반품 신청",
+  "276513": "교환 재출고 송장번호 조회_복제본",
+  "270906": "주문반품 ALF로 응대하기",
+  "270896": "주문취소 ALF로 응대하기",
+  "270884": "주문 및 배송조회 ALF로 응대하기",
+  "265895": "[전화] 교환 신청",
+  "263293": "구매 후 제품 문의_문제O 20260819",
+  "145599": "[전화]회수 재접수·정보변경",
+  "145084": "[전화] 배송 일정/오배송/미배송 (자사몰, 다이얼X)",
+  "143752": "교환/반품 반품배송비 입금 확인 요청",
+  "142207": "주문취소 ALF로 응대하기 (문자인증 O)",
+  "142206": "주문 및 배송조회 ALF로 응대하기 (문자인증 O)",
+  "142195": "전화알프테스트",
+  "131258": "반품 최종 (100% 기간 안내 포함) 수정 버전",
+  "127202": "반품 환불 일정 조회_개선VER 20261029",
+  "122673": "배송 일정/오배송/미배송_수정 버전",
+  "121028": "배송 정보 변경 요청 (통합) v2",
+  "120955": "배송_배송중 파손_new v2",
+  "54454": "교환 요청/접수",
+  "54132": "소음/온열/EMS 불량",
+  "51096": "반품 최종 (100% 기간 안내 포함)",
+  "51087": "[채팅]회수 재접수·정보변경",
+  "46031": "배송 정보 변경 요청 (통합)",
+  "45949": "주문 취소",
+  "44340": "구매 후 제품 문의",
+  "27230": "배송_배송중 파손_new",
+  "25909": "반품/교환 진행 상황 문의",
+  "23929": "배송_구성품, 사은품 누락",
+  "14063": "배송 일정/오배송/미배송(워크플로 연결)",
+  "14061": "배송 일정/오배송/미배송(최종태스크)",
+  "13874": "교환/반품 철회",
+  "13871": "무통장입금 태스크",
+  "13862": "채팅주문",
+  "10233": "교환 재출고 송장번호 조회",
+  "2291": "주문취소 후 배송건-수거신청"
+ }
 };
