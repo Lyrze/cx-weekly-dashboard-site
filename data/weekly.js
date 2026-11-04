@@ -1,7 +1,7 @@
 // 주간 실적 데이터 (금 17:00 ~ 금 17:00). scripts/collect_weekly.py 가 만든다. 직접 고치지 않는다.
 window.WEEKLY = {
- "generated_at": "2026-11-04T10:06:41+09:00",
- "basis": "CX_주간실적_집계기준.md v2.1",
+ "generated_at": "2026-11-04T12:04:52+09:00",
+ "basis": "CX_주간실적_집계기준.md v2.2",
  "main_brand": "슬룸",
  "brands": [
   "슬룸",
@@ -27,8 +27,9 @@ window.WEEKLY = {
      "ces_sum": 297,
      "ces_n": 81,
      "survey_sent": 81,
-     "frt": 128.6,
+     "frt": 125.6,
      "frt_n": 324,
+     "frt_days": 5,
      "sample": [],
      "alf": 1233,
      "alf_solo": 1145,
@@ -625,8 +626,9 @@ window.WEEKLY = {
      "ces_sum": 10,
      "ces_n": 2,
      "survey_sent": 2,
-     "frt": 111.9,
+     "frt": 112.0,
      "frt_n": 2,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -1081,6 +1083,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -1530,8 +1533,9 @@ window.WEEKLY = {
      "ces_sum": 13,
      "ces_n": 4,
      "survey_sent": 4,
-     "frt": 188.6,
+     "frt": 175.8,
      "frt_n": 25,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -1995,8 +1999,9 @@ window.WEEKLY = {
      "ces_sum": 12,
      "ces_n": 3,
      "survey_sent": 3,
-     "frt": 198.4,
+     "frt": 155.8,
      "frt_n": 18,
+     "frt_days": 4,
      "sample": [],
      "days": [
       {
@@ -2458,8 +2463,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 68.3,
+     "frt": 68.5,
      "frt_n": 2,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -2912,8 +2918,9 @@ window.WEEKLY = {
      "ces_sum": 113,
      "ces_n": 26,
      "survey_sent": 26,
-     "frt": 73.3,
+     "frt": 70.4,
      "frt_n": 95,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -3382,6 +3389,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -3831,8 +3839,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 28.8,
+     "frt": 29.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -4284,8 +4293,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 658.9,
+     "frt": 710.0,
      "frt_n": 3,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -4745,8 +4755,9 @@ window.WEEKLY = {
      "ces_sum": 370,
      "ces_n": 95,
      "survey_sent": 95,
-     "frt": 306.4,
+     "frt": 328.8,
      "frt_n": 382,
+     "frt_days": 5,
      "sample": [],
      "alf": 1432,
      "alf_solo": 1317,
@@ -5350,8 +5361,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 83.4,
+     "frt": 83.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -5805,6 +5817,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -6254,8 +6267,9 @@ window.WEEKLY = {
      "ces_sum": 38,
      "ces_n": 10,
      "survey_sent": 10,
-     "frt": 226.6,
+     "frt": 184.8,
      "frt_n": 20,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -6714,8 +6728,9 @@ window.WEEKLY = {
      "ces_sum": 12,
      "ces_n": 3,
      "survey_sent": 3,
-     "frt": 1110.1,
+     "frt": 677.0,
      "frt_n": 10,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -7171,8 +7186,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 18.4,
+     "frt": 18.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -7624,8 +7640,9 @@ window.WEEKLY = {
      "ces_sum": 65,
      "ces_n": 16,
      "survey_sent": 16,
-     "frt": 96.7,
+     "frt": 96.0,
      "frt_n": 66,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -8091,8 +8108,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 108.9,
+     "frt": 109.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -8546,6 +8564,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -8997,6 +9016,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -9452,8 +9472,9 @@ window.WEEKLY = {
      "ces_sum": 204,
      "ces_n": 51,
      "survey_sent": 51,
-     "frt": 203.1,
-     "frt_n": 245,
+     "frt": 176.3,
+     "frt_n": 209,
+     "frt_days": 3,
      "sample": [],
      "alf": 872,
      "alf_solo": 787,
@@ -10037,8 +10058,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 349.7,
+     "frt": 288.0,
      "frt_n": 3,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -10493,6 +10515,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -10942,8 +10965,9 @@ window.WEEKLY = {
      "ces_sum": 28,
      "ces_n": 8,
      "survey_sent": 8,
-     "frt": 147.2,
+     "frt": 156.3,
      "frt_n": 13,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -11404,8 +11428,9 @@ window.WEEKLY = {
      "ces_sum": 8,
      "ces_n": 2,
      "survey_sent": 2,
-     "frt": 193.0,
+     "frt": 211.5,
      "frt_n": 7,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -11867,6 +11892,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -12318,8 +12344,9 @@ window.WEEKLY = {
      "ces_sum": 33,
      "ces_n": 8,
      "survey_sent": 9,
-     "frt": 154.7,
-     "frt_n": 52,
+     "frt": 159.7,
+     "frt_n": 46,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -12786,6 +12813,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -13237,6 +13265,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -13688,6 +13717,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -14143,8 +14173,9 @@ window.WEEKLY = {
      "ces_sum": 452,
      "ces_n": 118,
      "survey_sent": 118,
-     "frt": 199.2,
-     "frt_n": 382,
+     "frt": 221.4,
+     "frt_n": 418,
+     "frt_days": 5,
      "sample": [],
      "alf": 1257,
      "alf_solo": 1143,
@@ -14752,8 +14783,9 @@ window.WEEKLY = {
      "ces_sum": 1,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 212.5,
+     "frt": 212.0,
      "frt_n": 3,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -15208,6 +15240,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -15657,8 +15690,9 @@ window.WEEKLY = {
      "ces_sum": 22,
      "ces_n": 8,
      "survey_sent": 8,
-     "frt": 108.6,
+     "frt": 112.0,
      "frt_n": 16,
+     "frt_days": 4,
      "sample": [],
      "days": [
       {
@@ -16119,8 +16153,9 @@ window.WEEKLY = {
      "ces_sum": 1,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 529.1,
+     "frt": 406.6,
      "frt_n": 11,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -16580,8 +16615,9 @@ window.WEEKLY = {
      "ces_sum": 4,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 104.1,
+     "frt": 73.3,
      "frt_n": 5,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -17036,8 +17072,9 @@ window.WEEKLY = {
      "ces_sum": 79,
      "ces_n": 19,
      "survey_sent": 20,
-     "frt": 172.7,
-     "frt_n": 93,
+     "frt": 161.2,
+     "frt_n": 99,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -17507,8 +17544,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 13.2,
+     "frt": 13.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -17962,6 +18000,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -18411,8 +18450,9 @@ window.WEEKLY = {
      "ces_sum": 1,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 135.6,
+     "frt": 167.0,
      "frt_n": 3,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -18872,8 +18912,9 @@ window.WEEKLY = {
      "ces_sum": 288,
      "ces_n": 83,
      "survey_sent": 83,
-     "frt": 170.0,
-     "frt_n": 379,
+     "frt": 171.0,
+     "frt_n": 334,
+     "frt_days": 3,
      "sample": [],
      "alf": 1168,
      "alf_solo": 1052,
@@ -19491,8 +19532,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 5.5,
+     "frt": 5.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -19946,6 +19988,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -20395,8 +20438,9 @@ window.WEEKLY = {
      "ces_sum": 31,
      "ces_n": 9,
      "survey_sent": 9,
-     "frt": 382.5,
-     "frt_n": 25,
+     "frt": 384.0,
+     "frt_n": 24,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -20862,8 +20906,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 80.8,
+     "frt": 54.5,
      "frt_n": 5,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -21319,6 +21364,7 @@ window.WEEKLY = {
      "survey_sent": 1,
      "frt": 1139.0,
      "frt_n": 3,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -21771,8 +21817,9 @@ window.WEEKLY = {
      "ces_sum": 95,
      "ces_n": 22,
      "survey_sent": 22,
-     "frt": 238.4,
+     "frt": 234.0,
      "frt_n": 55,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -22233,6 +22280,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -22684,6 +22732,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -23135,6 +23184,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -23590,8 +23640,9 @@ window.WEEKLY = {
      "ces_sum": 444,
      "ces_n": 121,
      "survey_sent": 121,
-     "frt": 216.5,
-     "frt_n": 438,
+     "frt": 209.0,
+     "frt_n": 483,
+     "frt_days": 5,
      "sample": [],
      "alf": 1582,
      "alf_solo": 1421,
@@ -24202,8 +24253,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 261.7,
+     "frt": 262.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -24657,6 +24709,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -25106,8 +25159,9 @@ window.WEEKLY = {
      "ces_sum": 36,
      "ces_n": 11,
      "survey_sent": 11,
-     "frt": 136.2,
-     "frt_n": 24,
+     "frt": 153.0,
+     "frt_n": 25,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -25573,8 +25627,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 177.8,
+     "frt": 203.5,
      "frt_n": 8,
+     "frt_days": 4,
      "sample": [],
      "days": [
       {
@@ -26033,8 +26088,9 @@ window.WEEKLY = {
      "ces_sum": 5,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 186.6,
+     "frt": 238.3,
      "frt_n": 4,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -26488,8 +26544,9 @@ window.WEEKLY = {
      "ces_sum": 67,
      "ces_n": 15,
      "survey_sent": 15,
-     "frt": 277.3,
+     "frt": 308.2,
      "frt_n": 56,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -26949,8 +27006,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 81.9,
+     "frt": 82.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -27404,6 +27462,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -27853,8 +27912,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 2534.3,
+     "frt": 2534.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -28312,8 +28372,9 @@ window.WEEKLY = {
      "ces_sum": 381,
      "ces_n": 109,
      "survey_sent": 109,
-     "frt": 222.6,
+     "frt": 248.0,
      "frt_n": 427,
+     "frt_days": 5,
      "sample": [],
      "alf": 1528,
      "alf_solo": 1391,
@@ -28925,6 +28986,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -29376,6 +29438,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -29825,8 +29888,9 @@ window.WEEKLY = {
      "ces_sum": 21,
      "ces_n": 7,
      "survey_sent": 7,
-     "frt": 276.1,
+     "frt": 228.4,
      "frt_n": 23,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -30294,8 +30358,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 350.5,
+     "frt": 296.0,
      "frt_n": 6,
+     "frt_days": 4,
      "sample": [],
      "days": [
       {
@@ -30752,8 +30817,9 @@ window.WEEKLY = {
      "ces_sum": 5,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 24.3,
+     "frt": 24.5,
      "frt_n": 2,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -31206,8 +31272,9 @@ window.WEEKLY = {
      "ces_sum": 55,
      "ces_n": 12,
      "survey_sent": 13,
-     "frt": 102.8,
+     "frt": 110.4,
      "frt_n": 75,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -31672,6 +31739,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -32123,6 +32191,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -32572,8 +32641,9 @@ window.WEEKLY = {
      "ces_sum": 5,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 105.5,
+     "frt": 106.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -33031,8 +33101,9 @@ window.WEEKLY = {
      "ces_sum": 356,
      "ces_n": 94,
      "survey_sent": 94,
-     "frt": 149.5,
+     "frt": 151.0,
      "frt_n": 375,
+     "frt_days": 5,
      "sample": [],
      "alf": 1439,
      "alf_solo": 1304,
@@ -33645,6 +33716,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -34096,6 +34168,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -34545,8 +34618,9 @@ window.WEEKLY = {
      "ces_sum": 54,
      "ces_n": 17,
      "survey_sent": 17,
-     "frt": 257.4,
+     "frt": 369.6,
      "frt_n": 51,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -35018,8 +35092,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 791.9,
+     "frt": 792.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -35473,6 +35548,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -35922,8 +35998,9 @@ window.WEEKLY = {
      "ces_sum": 53,
      "ces_n": 13,
      "survey_sent": 13,
-     "frt": 190.5,
+     "frt": 231.6,
      "frt_n": 75,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -36394,6 +36471,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -36845,6 +36923,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -37296,8 +37375,9 @@ window.WEEKLY = {
      "ces_sum": 2,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 355.9,
+     "frt": 393.0,
      "frt_n": 4,
+     "frt_days": 3,
      "sample": [],
      "days": [
       {
@@ -37758,8 +37838,9 @@ window.WEEKLY = {
      "ces_sum": 1364,
      "ces_n": 359,
      "survey_sent": 359,
-     "frt": 202.5,
-     "frt_n": 1409,
+     "frt": 201.8,
+     "frt_n": 1411,
+     "frt_days": 20,
      "sample": [],
      "alf": 5190,
      "alf_solo": 4768,
@@ -38586,8 +38667,9 @@ window.WEEKLY = {
      "ces_sum": 11,
      "ces_n": 3,
      "survey_sent": 3,
-     "frt": 240.1,
+     "frt": 231.8,
      "frt_n": 10,
+     "frt_days": 6,
      "sample": [],
      "days": [
       {
@@ -39254,6 +39336,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -39910,8 +39993,9 @@ window.WEEKLY = {
      "ces_sum": 118,
      "ces_n": 33,
      "survey_sent": 33,
-     "frt": 162.2,
+     "frt": 145.8,
      "frt_n": 81,
+     "frt_days": 19,
      "sample": [],
      "days": [
       {
@@ -40589,8 +40673,9 @@ window.WEEKLY = {
      "ces_sum": 38,
      "ces_n": 10,
      "survey_sent": 10,
-     "frt": 423.7,
+     "frt": 328.5,
      "frt_n": 50,
+     "frt_days": 15,
      "sample": [],
      "days": [
       {
@@ -41270,8 +41355,9 @@ window.WEEKLY = {
      "ces_sum": 4,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 91.1,
+     "frt": 67.4,
      "frt_n": 7,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -41935,8 +42021,9 @@ window.WEEKLY = {
      "ces_sum": 299,
      "ces_n": 70,
      "survey_sent": 71,
-     "frt": 107.4,
+     "frt": 106.2,
      "frt_n": 305,
+     "frt_days": 20,
      "sample": [],
      "days": [
       {
@@ -42619,6 +42706,7 @@ window.WEEKLY = {
      "survey_sent": 3,
      "frt": 155.8,
      "frt_n": 5,
+     "frt_days": 5,
      "sample": [],
      "days": [
       {
@@ -43281,8 +43369,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 28.8,
+     "frt": 29.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -43941,8 +44030,9 @@ window.WEEKLY = {
      "ces_sum": 1,
      "ces_n": 1,
      "survey_sent": 1,
-     "frt": 215.8,
+     "frt": 331.2,
      "frt_n": 15,
+     "frt_days": 6,
      "sample": [],
      "days": [
       {
@@ -44611,8 +44701,9 @@ window.WEEKLY = {
      "ces_sum": 1596,
      "ces_n": 441,
      "survey_sent": 441,
-     "frt": 189.7,
-     "frt_n": 1780,
+     "frt": 196.8,
+     "frt_n": 1759,
+     "frt_days": 20,
      "sample": [],
      "alf": 6252,
      "alf_solo": 5653,
@@ -45493,8 +45584,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 133.6,
+     "frt": 133.5,
      "frt_n": 2,
+     "frt_days": 2,
      "sample": [],
      "days": [
       {
@@ -46165,6 +46257,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -46830,8 +46923,9 @@ window.WEEKLY = {
      "ces_sum": 149,
      "ces_n": 46,
      "survey_sent": 46,
-     "frt": 253.4,
-     "frt_n": 130,
+     "frt": 266.1,
+     "frt_n": 127,
+     "frt_days": 19,
      "sample": [],
      "days": [
       {
@@ -47521,8 +47615,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 341.1,
+     "frt": 292.5,
      "frt_n": 25,
+     "frt_days": 13,
      "sample": [],
      "days": [
       {
@@ -48204,8 +48299,9 @@ window.WEEKLY = {
      "ces_sum": 15,
      "ces_n": 3,
      "survey_sent": 3,
-     "frt": 425.0,
+     "frt": 468.8,
      "frt_n": 10,
+     "frt_days": 9,
      "sample": [],
      "days": [
       {
@@ -48879,8 +48975,9 @@ window.WEEKLY = {
      "ces_sum": 311,
      "ces_n": 72,
      "survey_sent": 74,
-     "frt": 198.5,
-     "frt_n": 301,
+     "frt": 219.8,
+     "frt_n": 303,
+     "frt_days": 20,
      "sample": [],
      "days": [
       {
@@ -49571,8 +49668,9 @@ window.WEEKLY = {
      "ces_sum": 0,
      "ces_n": 0,
      "survey_sent": 0,
-     "frt": 81.9,
+     "frt": 82.0,
      "frt_n": 1,
+     "frt_days": 1,
      "sample": [],
      "days": [
       {
@@ -50242,6 +50340,7 @@ window.WEEKLY = {
      "survey_sent": 0,
      "frt": null,
      "frt_n": 0,
+     "frt_days": 0,
      "sample": [],
      "days": [
       {
@@ -50909,8 +51008,9 @@ window.WEEKLY = {
      "ces_sum": 7,
      "ces_n": 2,
      "survey_sent": 2,
-     "frt": 526.3,
+     "frt": 648.8,
      "frt_n": 8,
+     "frt_days": 6,
      "sample": [],
      "days": [
       {

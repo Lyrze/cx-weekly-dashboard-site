@@ -401,7 +401,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     { id: 'ces',        name: 'CES',          unit: '점',  target: 3.6, up: true, official: '슬룸',
       scope: { [ALL]: '슬룸 기준 (공식 지표)' }, desc: '노력 점수 응답 평균 (설문 발송 시각 기준)' },
     { id: 'frt',        name: 'FRT',          unit: 'sec', target: 600, up: false,
-      scope: { [ALL]: '브랜드별 값의 단순 평균' }, desc: '첫 응답까지 걸린 시간 (운영 시간 기준)' }
+      scope: { [ALL]: '브랜드별 값의 단순 평균' }, desc: '첫 응답까지 걸린 시간 (운영 시간 기준) · 일별 값의 단순 평균 (일일 시트와 같은 방식)' }
   ];
   const KM = Object.fromEntries(KPIS.map(k => [k.id, k]));
   const FIELDS = { alf_rate: ['alf_rate'], alf_handle: ['alf_handle'], csat: ['csat_sum', 'csat_n'], ces: ['ces_sum', 'ces_n'], frt: ['frt'] };
@@ -582,7 +582,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
           <span class="cmp-val ${r.v != null && !smallN(k, r) && !pass(k, r.v) ? 'miss' : ''}">${fmt(k, r.v)}<small>${(r.n ?? 0).toLocaleString()}건${smallN(k, r) && r.n ? ' · 참고' : ''}</small></span>
         </div>`).join('')}${none.length ? `<div class="cmp-empty">${id === 'frt' ? '상담' : '응답'} 없음: ${none.map(r => r.b).join(' · ')}</div>` : ''}</div>
         ${id === 'ces' ? '<div class="cmp-foot">공식 CES는 슬룸 값입니다. 다른 브랜드는 참고용입니다.</div>' : ''}
-        ${id === 'frt' ? '<div class="cmp-foot">전체 FRT는 상담 건수와 관계없이 브랜드 값을 그대로 평균합니다.</div>' : ''}
+        ${id === 'frt' ? '<div class="cmp-foot">FRT는 일일 시트와 같은 방식입니다. 영업일마다 직전 영업일 17시~당일 17시 평균을 내고(월요일엔 주말 포함), 그 일별 값을 단순 평균합니다. 전체 FRT는 브랜드 값을 다시 단순 평균합니다.</div>' : ''}
       </article>`;
     }).join('');
     $('#cmp').querySelectorAll('.cmp-name').forEach(e => e.addEventListener('click', () => setView(e.dataset.b)));
