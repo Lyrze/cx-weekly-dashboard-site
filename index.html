@@ -191,6 +191,8 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
 .badge.ref { color: var(--ink-2); background: color-mix(in srgb, var(--axis) 35%, transparent); }
 .tile-n { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
 .tile-empty { margin-top: 12px; font-size: 15px; color: var(--ink-3); }
+.ib-note { font-size: 12.5px; color: var(--ink-2); margin: -14px 0 24px; line-height: 1.55; }
+.scope-note:not([hidden]) + .ib-note { margin-top: -12px; }
 .scope-note { font-size: 13.5px; color: var(--ink-2); background: var(--surface); border: 1px dashed var(--axis); border-radius: 10px; padding: 9px 14px; margin: -14px 0 24px; }
 
 /* brand compare */
@@ -312,6 +314,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
   <div class="summary" id="summary"></div>
   <section class="tiles" id="tiles" aria-label="이번 주 지표"></section>
   <div class="scope-note" id="scope-note" hidden></div>
+  <p class="ib-note" id="ib-note"></p>
 
   <div id="cmp-wrap">
     <h2>브랜드 비교</h2>
@@ -530,6 +533,8 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     const note = $('#scope-note');
     note.hidden = view === ALL || view === '슬룸';
     note.textContent = 'ALF 해결률·처리 비율은 슬룸에만 ALF가 적용되어 있어 이 브랜드에서는 보이지 않습니다. 응답 10건 미만인 CSAT·CES는 판정 대신 "참고"로 표시합니다.';
+    $('#ib-note').innerHTML = `※ <b>I/B 상담</b> = 채널톡 커스텀 리포트 '💬 전체 I/B 인입호 (ALF 포함)'과 같은 기준입니다. ALF가 응대한 상담도 포함하고, 포기·비운영·IVR 이탈 등 미응대 상담(missedReason 14종)과 O/B 태그 상담은 뺍니다.`
+      + (view === ALL ? ' 전체 통합은 10개 브랜드 합계이고, 슬룸만 보려면 슬룸 탭을 고르세요.' : '');
     $('#cmp-wrap').hidden = view !== ALL;
   }
 
