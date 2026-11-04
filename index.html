@@ -244,6 +244,8 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
 .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .seg button { font: inherit; font-size: 13px; font-weight: 600; padding: 5px 12px; border: 0; background: var(--surface); color: var(--ink-2); cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--ink-1); color: var(--surface); }
+#mode-seg { border-radius: 8px; }
+#mode-seg button { font-size: 14px; padding: 8px 16px; }
 .heat-scroll { overflow-x: auto; margin-top: 12px; }
 .heat { display: grid; grid-template-columns: 28px repeat(24, minmax(34px, 1fr)); gap: 3px; min-width: 900px; font-variant-numeric: tabular-nums; }
 .heat .hh { font-size: 11.5px; color: var(--ink-3); text-align: center; padding-bottom: 2px; }
@@ -286,11 +288,12 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
   <header>
     <div>
       <div class="eyebrow">CX팀 · 채널톡 주간 실적</div>
-      <h1>주간 실적 대시보드</h1>
+      <h1 data-m="월간 실적 대시보드">주간 실적 대시보드</h1>
       <div class="period" id="period"></div>
     </div>
     <div class="controls">
-      <label for="week">기준 주</label>
+      <span class="seg" id="mode-seg" role="group" aria-label="기간 단위"><button type="button" data-mode="week" aria-pressed="true">주간</button><button type="button" data-mode="month" aria-pressed="false">월간</button></span>
+      <label for="week" data-m="기준 월">기준 주</label>
       <select id="week"></select>
       <button class="btn" id="theme" type="button" aria-label="화면 모드 바꾸기">어두운 화면</button>
     </div>
@@ -301,7 +304,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
   <div class="stick">
     <nav class="tabs" id="tabs" role="tablist" aria-label="브랜드"></nav>
     <nav class="jump" aria-label="섹션 바로가기">
-      <a href="#sec-kpi">핵심 지표</a><a href="#sec-alf" data-alf>ALF 퍼포먼스</a><a href="#sec-agent">응대 주체</a><a href="#sec-traffic">상담 트래픽</a><a href="#sec-tasks" data-alf2>태스크 순위</a><a href="#sec-tags">상담 태그</a><a href="#sec-lowcsat">CSAT 1~3점 태그</a><a href="#sec-table">주차별 표</a>
+      <a href="#sec-kpi">핵심 지표</a><a href="#sec-alf" data-alf>ALF 퍼포먼스</a><a href="#sec-agent">응대 주체</a><a href="#sec-traffic">상담 트래픽</a><a href="#sec-tasks" data-alf2>태스크 순위</a><a href="#sec-tags">상담 태그</a><a href="#sec-lowcsat">CSAT 1~3점 태그</a><a href="#sec-table" data-m="월별 표">주차별 표</a>
     </nav>
   </div>
   <span id="sec-kpi"></span>
@@ -312,23 +315,23 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
 
   <div id="cmp-wrap">
     <h2>브랜드 비교</h2>
-    <p class="sub">기준 주의 브랜드별 값입니다. 세로선은 목표, 브랜드 이름을 누르면 그 브랜드 화면으로 넘어갑니다.</p>
+    <p class="sub" data-m="기준 월의 브랜드별 값입니다. 세로선은 목표, 브랜드 이름을 누르면 그 브랜드 화면으로 넘어갑니다.">기준 주의 브랜드별 값입니다. 세로선은 목표, 브랜드 이름을 누르면 그 브랜드 화면으로 넘어갑니다.</p>
     <section class="cmp" id="cmp"></section>
   </div>
 
-  <h2>주간 추이</h2>
-  <p class="sub">최근 8주. 가로선은 목표입니다. 점에 마우스를 올리면 전주 대비 증감이 보이고, 누르면 그 주로 바뀝니다.</p>
+  <h2 data-m="월간 추이">주간 추이</h2>
+  <p class="sub" data-m="월별 추이. 가로선은 목표입니다. 점에 마우스를 올리면 전월 대비 증감이 보이고, 누르면 그 달로 바뀝니다.">최근 8주. 가로선은 목표입니다. 점에 마우스를 올리면 전주 대비 증감이 보이고, 누르면 그 주로 바뀝니다.</p>
   <section class="grid" id="charts"></section>
 
   <section id="sec-alf" class="sec">
     <h2>ALF 퍼포먼스</h2>
-    <p class="sub">슬룸 기준. 일 단위도 17시에 끊고, 끝나는 날짜로 표시합니다. 미해결 = ALF가 응대한 뒤 상담사가 배정된 상담.</p>
+    <p class="sub" data-m="슬룸 기준. 월간은 달력 기준(0시)으로 하루를 나눕니다. 미해결 = ALF가 응대한 뒤 상담사가 배정된 상담.">슬룸 기준. 일 단위도 17시에 끊고, 끝나는 날짜로 표시합니다. 미해결 = ALF가 응대한 뒤 상담사가 배정된 상담.</p>
     <div class="alf-grid">
       <div class="stat-grid" id="alf-stats"></div>
       <article class="card"><div class="card-head"><span class="card-title">ALF 해결·미해결 상담 (일별)</span><span class="card-scope" id="alf-day-scope"></span></div>
         <div class="legend" id="alf-day-legend"></div><div class="chart" id="alf-day"></div></article>
     </div>
-    <article class="card wide"><div class="card-head"><span class="card-title">ALF 해결·미해결 상담 (주별)</span><span class="card-scope">최근 8주</span></div>
+    <article class="card wide"><div class="card-head"><span class="card-title" data-m="ALF 해결·미해결 상담 (월별)">ALF 해결·미해결 상담 (주별)</span><span class="card-scope" data-m="월별">최근 8주</span></div>
       <div class="legend" id="alf-week-legend"></div><div class="chart" id="alf-week"></div></article>
   </section>
 
@@ -347,7 +350,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     <p class="sub">요일 × 시간대별 인입 건수 (관여 시작 시각 기준, O/B 제외). 색이 진할수록 많습니다.</p>
     <article class="card wide">
       <div class="card-head"><span class="card-title" id="heat-title">시간대별 I/B 인입호</span>
-        <span class="seg" role="group" aria-label="집계 범위"><button type="button" data-h="ib" aria-pressed="true">I/B 인입호</button><button type="button" data-h="all" aria-pressed="false">포기·비운영 포함</button></span></div>
+        <span class="seg" id="heat-seg" role="group" aria-label="집계 범위"><button type="button" data-h="ib" aria-pressed="true">I/B 인입호</button><button type="button" data-h="all" aria-pressed="false">포기·비운영 포함</button></span></div>
       <div class="heat-scroll"><div class="heat" id="heat"></div></div>
       <div class="heat-legend" id="heat-legend"></div>
     </article>
@@ -371,8 +374,8 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     <article class="card wide"><div id="lowcsat"></div></article>
   </section>
 
-  <h2 id="sec-table">주차별 표</h2>
-  <p class="sub">행을 누르면 위 카드가 그 주 기준으로 바뀝니다. 빨간 ! 표시는 목표 미달입니다.</p>
+  <h2 id="sec-table" data-m="월별 표">주차별 표</h2>
+  <p class="sub" data-m="행을 누르면 위 카드가 그 달 기준으로 바뀝니다. 빨간 ! 표시는 목표 미달입니다.">행을 누르면 위 카드가 그 주 기준으로 바뀝니다. 빨간 ! 표시는 목표 미달입니다.</p>
   <div class="table-card"><table id="table"></table></div>
 
   <footer>
@@ -384,7 +387,8 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
 <script src="data/weekly.js"></script>
 <script>
 (() => {
-  const D = window.WEEKLY, W = D.weeks, BR = D.brands, ALL = '전체';
+  const D = window.WEEKLY, BR = D.brands, ALL = '전체';
+  let mode = 'week', W = D.weeks;   // 주간 / 월간 전환 시 W 를 바꿔 끼운다
   const DAY = ['일', '월', '화', '수', '목', '금', '토'];
   const SMALL_N = 10;   // 응답 수가 이보다 적으면 판정 대신 '참고'
   const KPIS = [
@@ -405,12 +409,18 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
   const hashGet = () => Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
   const h0 = hashGet();
   let view = [ALL, ...BR].includes(h0.brand) ? h0.brand : ALL;
+  if (h0.mode === 'month' && (D.months || []).length) { mode = 'month'; W = D.months; }
   let sel = W.findIndex(w => w.end === h0.week); if (sel < 0) sel = W.length - 1;
+  const PREV = () => mode === 'month' ? '전월' : '전주';
 
   const $ = s => document.querySelector(s);
   const md = s => { const d = new Date(s + 'T00:00:00'); return `${d.getMonth() + 1}/${d.getDate()}`; };
-  const wkLabel = w => `${md(w.start)} ~ ${md(w.end)}`;
-  const wkLong = w => { const a = new Date(w.start + 'T00:00:00'), b = new Date(w.end + 'T00:00:00');
+  const monLbl = w => { const d = new Date(w.start + 'T00:00:00'); return `${d.getFullYear()}년 ${d.getMonth() + 1}월`; };
+  const axisLbl = w => mode === 'month' ? `${+w.start.slice(5, 7)}월` : md(w.end);
+  const wkLabel = w => mode === 'month' ? monLbl(w) : `${md(w.start)} ~ ${md(w.end)}`;
+  const wkLong = w => mode === 'month' ? (() => { const a = new Date(w.start + 'T00:00:00'), b = new Date(new Date(w.end + 'T00:00:00') - 864e5);
+    return `${monLbl(w)} (${a.getMonth() + 1}/${a.getDate()} ~ ${b.getMonth() + 1}/${b.getDate()})`; })() : wkLongW(w);
+  const wkLongW = w => { const a = new Date(w.start + 'T00:00:00'), b = new Date(w.end + 'T00:00:00');
     return `${a.getMonth() + 1}/${a.getDate()}(${DAY[a.getDay()]}) 17:00 ~ ${b.getMonth() + 1}/${b.getDate()}(${DAY[b.getDay()]}) 17:00`; };
 
   // ---------- 값 계산: 브랜드 원자료 → 화면 값 (전체는 집계 기준 v2.1 규칙대로) ----------
@@ -485,7 +495,19 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
   }
 
   // ---------- 상단 ----------
-  W.forEach((w, i) => $('#week').insertAdjacentHTML('afterbegin', `<option value="${i}">${wkLabel(w)}${i === W.length - 1 ? ' (최근)' : ''}</option>`));
+  const buildOptions = () => { $('#week').innerHTML = '';
+    W.forEach((w, i) => $('#week').insertAdjacentHTML('afterbegin', `<option value="${i}">${wkLabel(w)}${i === W.length - 1 ? ' (최근)' : ''}</option>`)); };
+  buildOptions();
+  function applyModeTexts() {
+    document.querySelectorAll('[data-m]').forEach(el => { if (el.dataset.w == null) el.dataset.w = el.innerHTML; el.innerHTML = mode === 'month' ? el.dataset.m : el.dataset.w; });
+    document.querySelectorAll('#mode-seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === mode));
+  }
+  if (!(D.months || []).length) $('#mode-seg').hidden = true;
+  document.querySelectorAll('#mode-seg button').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.mode === mode) return;
+    mode = b.dataset.mode; W = mode === 'month' ? D.months : D.weeks; sel = W.length - 1;
+    buildOptions(); $('#week').value = sel; render();
+  }));
   $('#tabs').innerHTML = [ALL, ...BR].map(b => `<button class="tab" role="tab" data-b="${b}">${b === ALL ? '전체 통합' : b}</button>`).join('');
   $('#tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if (t) setView(t.dataset.b); });
   if (W.some(w => BR.some(b => (w.brands[b].sample || []).length))) {
@@ -497,7 +519,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
 
   function renderHead() {
     const w = W[sel], p = W[sel - 1];
-    $('#period').innerHTML = `<b>${wkLong(w)}</b>${p ? ` · 전주 ${wkLabel(p)} 대비` : ''}`;
+    $('#period').innerHTML = `<b>${wkLong(w)}</b>${p ? ` · ${PREV()} ${wkLabel(p)} 대비` : ''}`;
     document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.b === view));
     const ks = kpisFor(view), xs = ks.map(k => [k, get(w, k.id)]).filter(([k, x]) => x.v != null && !smallN(k, x));
     const ok = xs.filter(([k, x]) => pass(k, x.v)).length;
@@ -590,7 +612,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     for (let v = lo; v <= hi + 1e-9; v += step)
       g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text class="tick" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${tickTxt(k, v)}</text>`;
     const every = Wd < 330 ? 2 : 1;
-    W.forEach((w, i) => { if ((n - 1 - i) % every === 0) g += `<text class="tick" x="${x(i)}" y="${H - 6}" text-anchor="middle">${md(w.end)}</text>`; });
+    W.forEach((w, i) => { if ((n - 1 - i) % every === 0) g += `<text class="tick" x="${x(i)}" y="${H - 6}" text-anchor="middle">${axisLbl(w)}</text>`; });
     const ty = y(k.target);
     g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${ty}" y2="${ty}" stroke="var(--target)" stroke-width="1.5"/>`;
     const lastY = pts[n - 1].v != null ? y(pts[n - 1].v) : -99;
@@ -623,7 +645,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
       return [x(i), `<div class="t-week">${wkLabel(w)}${w.note ? ` · ${w.note}` : ''}</div>
         <div class="t-val">${fmt(k, c.v)}</div>
         ${nTxt(k, c) ? `<div class="t-row"><span>${nTxt(k, c)}</span></div>` : ''}
-        <div class="t-row"><span>전주 대비</span><span class="delta ${better(k, d)}">${fmtDelta(k, d)}</span></div>
+        <div class="t-row"><span>${PREV()} 대비</span><span class="delta ${better(k, d)}">${fmtDelta(k, d)}</span></div>
         <div class="t-row"><span>목표</span><span>${c.v == null ? '—' : smallN(k, c) ? '참고' : pass(k, c.v) ? '달성' : '미달성'}</span></div>
         ${c.ex ? '<div class="t-sample">예시 값</div>' : ''}`];
     });
@@ -647,7 +669,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     vs.forEach((v, i) => {
       const c = m.l + band * i + band / 2;
       g += `<g opacity="${i === sel ? 1 : .55}">` + (showAlf ? bar(c - bw - 1, v.ib, 'var(--series)', v.ibEx) + bar(c + 1, v.alf, 'var(--series-2)', v.alfEx) : bar(c - bw / 2, v.ib, 'var(--series)', v.ibEx)) + '</g>';
-      if ((n - 1 - i) % every === 0) g += `<text class="tick" x="${c}" y="${H - 6}" text-anchor="middle">${md(W[i].end)}</text>`;
+      if ((n - 1 - i) % every === 0) g += `<text class="tick" x="${c}" y="${H - 6}" text-anchor="middle">${axisLbl(W[i])}</text>`;
       g += `<rect class="hit" data-i="${i}" x="${c - band / 2}" y="0" width="${band}" height="${H}" fill="transparent"/>`;
     });
     g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--axis)"/>`;
@@ -658,7 +680,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
       return [m.l + band * i + band / 2, `<div class="t-week">${wkLabel(W[i])}${W[i].note ? ` · ${W[i].note}` : ''}</div>
         <div class="t-row"><span>I/B 상담</span><b>${v.ib.toLocaleString()}건</b></div>
         ${showAlf ? `<div class="t-row"><span>ALF 응대</span><b>${v.alf.toLocaleString()}건</b></div>` : ''}
-        <div class="t-row"><span>I/B 전주 대비</span><span>${d == null ? '—' : (d >= 0 ? '+' : '−') + Math.abs(d).toLocaleString()}</span></div>
+        <div class="t-row"><span>I/B ${PREV()} 대비</span><span>${d == null ? '—' : (d >= 0 ? '+' : '−') + Math.abs(d).toLocaleString()}</span></div>
         ${v.ibEx ? '<div class="t-sample">예시 값</div>' : ''}`];
     }, false);
   }
@@ -684,7 +706,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     $('#charts').innerHTML = kpisFor(view).map(k => `<article class="card" data-k="${k.id}">
         <div class="card-head"><span class="card-title">${k.name}</span><span class="card-scope">${scopeTxt(k)} · 목표 ${tgtTxt(k)}</span></div>
         <div class="card-now"></div><div class="chart"></div></article>`).join('')
-      + `<article class="card" data-k="volume"><div class="card-head"><span class="card-title">상담 수</span><span class="card-scope">${view === ALL ? '전 브랜드 합계' : view} · 주간 건수</span></div>
+      + `<article class="card" data-k="volume"><div class="card-head"><span class="card-title">상담 수</span><span class="card-scope">${view === ALL ? '전 브랜드 합계' : view} · ${mode === 'month' ? '월간' : '주간'} 건수</span></div>
         <div class="legend"></div><div class="chart"></div></article>`;
     kpisFor(view).forEach(k => {
       const el = $(`#charts [data-k="${k.id}"]`), x = get(w, k.id), d = diff(x, p && get(p, k.id), k.id);
@@ -697,7 +719,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
   // ---------- 표 ----------
   function renderTable() {
     const ks = kpisFor(view), showAlf = view === ALL || view === '슬룸';
-    let h = `<thead><tr><th>주차 (금 17시 기준)</th>${ks.map(k => `<th>${k.name}<span class="tg">목표 ${tgtTxt(k)}</span></th>`).join('')}<th>I/B 상담</th>${showAlf ? '<th>ALF 응대</th>' : ''}</tr></thead><tbody>`;
+    let h = `<thead><tr><th>${mode === 'month' ? '월 (달력 기준)' : '주차 (금 17시 기준)'}</th>${ks.map(k => `<th>${k.name}<span class="tg">목표 ${tgtTxt(k)}</span></th>`).join('')}<th>I/B 상담</th>${showAlf ? '<th>ALF 응대</th>' : ''}</tr></thead><tbody>`;
     for (let i = W.length - 1; i >= 0; i--) {
       const w = W[i], p = W[i - 1], vo = volume(w);
       h += `<tr data-i="${i}" class="${i === sel ? 'sel' : ''}"><td>${wkLabel(w)}${w.note ? `<span class="wk-note">${w.note}</span>` : ''}</td>`;
@@ -735,7 +757,8 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     let g = '';
     for (let v = 0; v <= hi + 1e-9; v += step)
       g += `<line x1="${m.l}" x2="${Wd - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text class="tick" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v >= 1000 ? (v / 1000).toFixed(1) + 'K' : v}</text>`;
-    labels.forEach((l, i) => g += `<text class="tick" x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'}">${l}</text>`);
+    const skip = Math.max(1, Math.ceil(n / Math.max(4, Math.floor((Wd - m.l - m.r) / 78))));   // 30일이면 띄엄띄엄
+    labels.forEach((l, i) => (n - 1 - i) % skip === 0 && (g += `<text class="tick" x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'}">${l}</text>`));
     g += `<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--axis)" opacity="0"/>`;
     series.forEach(s => {
       g += `<path d="${s.vals.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1)).join('')}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
@@ -809,7 +832,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     const st = [{ name: 'ALF 해결', color: C.solved, vals: W.map(w => w.brands[MAIN].alf_solo) },
                 { name: 'ALF 미해결', color: C.agent, vals: W.map(w => un(w.brands[MAIN])) }];
     $('#alf-week-legend').innerHTML = legend(st);
-    stackedCols($('#alf-week'), W.map(w => md(w.end)), st, i => { const b = W[i].brands[MAIN];
+    stackedCols($('#alf-week'), W.map(axisLbl), st, i => { const b = W[i].brands[MAIN];
       return `<div class="t-week">${wkLabel(W[i])}</div><div class="t-row"><span>ALF 관여</span><b>${num(b.alf)}건</b></div>
         <div class="t-row"><span>해결</span><b>${num(b.alf_solo)}건</b></div><div class="t-row"><span>미해결</span><b>${num(un(b))}건</b></div>
         <div class="t-row"><span>해결률</span><b>${+b.alf_rate.toFixed(2)}%</b></div>`; });
@@ -830,7 +853,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     const dd = prevRate == null || head[1] == null ? null : +(head[1] - prevRate).toFixed(2);
     $('#agent-rate').innerHTML = `<div class="card-head"><span class="card-title">${head[0]}</span><span class="card-scope">${view === ALL ? '전 브랜드 I/B 중 (ALF는 슬룸만 적용)' : view}</span></div>
       <div class="stat-value" style="margin-top:12px">${head[1] == null ? '—' : head[1].toFixed(1)}<small>%</small></div>
-      <div class="stat-meta"><span class="delta flat">${dd == null ? '—' : `${dd > 0 ? '▲' : dd < 0 ? '▼' : '–'} ${Math.abs(dd).toFixed(2)}%p`}</span><span>전주 대비</span></div>
+      <div class="stat-meta"><span class="delta flat">${dd == null ? '—' : `${dd > 0 ? '▲' : dd < 0 ? '▼' : '–'} ${Math.abs(dd).toFixed(2)}%p`}</span><span>${PREV()} 대비</span></div>
       <div class="meter"><span style="width:${(head[1] || 0).toFixed(1)}%"></span></div>
       <div class="split"><span>${head[2]} <b>${num(head[3])}</b></span><span>${head[4]} <b>${num(head[5])}</b></span></div>
       <div class="rate-rows">
@@ -859,9 +882,9 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     $('#heat').innerHTML = h;
     $('#heat-title').textContent = (heatMode === 'ib' ? '시간대별 I/B 인입호' : '시간대별 인입 (포기·비운영 포함)') + ` · ${view === ALL ? '전 브랜드' : view} · ${wkLabel(W[sel])}`;
     $('#heat-legend').innerHTML = `<span>0</span><span class="bar" style="background:linear-gradient(90deg, ${ramp[0]}, ${ramp[ramp.length - 1]})"></span><span>${max}</span>`;
-    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.h === heatMode));
+    document.querySelectorAll('#heat-seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.h === heatMode));
   }
-  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { heatMode = b.dataset.h; renderTraffic(); }));
+  document.querySelectorAll('#heat-seg button').forEach(b => b.addEventListener('click', () => { heatMode = b.dataset.h; renderTraffic(); }));
 
   // ---------- 상담 태그 TOP 10 ----------
   function renderTags() {
@@ -869,7 +892,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     const top = Object.entries(cur.tags).slice(0, 10), max = top.length ? top[0][1] : 1;
     $('#tags-sub').textContent = `${view === ALL ? `전체 화면은 ${MAIN} 기준입니다. ` : ''}${brand} · 상담사가 배정된 상담 ${num(cur.tag_base)}건 기준 (O/B 제외). 한 상담에 태그가 여럿이면 태그마다 셉니다. 비중 = 태그 건수 ÷ 배정 상담 수.`;
     if (!top.length) { $('#tags').innerHTML = '<p class="sub" style="padding:24px 0;text-align:center">이 주에 태그가 달린 상담이 없습니다.</p>'; return; }
-    $('#tags').innerHTML = `<div class="tag-row head"><span></span><span>상담 태그</span><span class="tag-track"></span><span class="tag-num">건수</span><span class="tag-share">비중</span><span class="tag-d">전주 대비</span></div>`
+    $('#tags').innerHTML = `<div class="tag-row head"><span></span><span>상담 태그</span><span class="tag-track"></span><span class="tag-num">건수</span><span class="tag-share">비중</span><span class="tag-d">${PREV()} 대비</span></div>`
       + top.map(([t, v], i) => {
         const pv = prev ? prev.tags[t] : undefined, d = pv == null ? null : v - pv;
         return `<div class="tag-row"><span class="tag-rank">${i + 1}</span><span class="tag-name" title="${t}">${t}</span>
@@ -892,7 +915,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     // 태스크 ID는 숫자 키라 객체 순서가 오름차순으로 바뀐다 → 여기서 다시 정렬
     const top = Object.entries(cur.tasks).sort((x, y) => y[1].chats - x[1].chats || y[1].runs - x[1].runs).slice(0, 10), max = top.length ? top[0][1].chats : 1;
     $('#tasks-sub').textContent = `${MAIN} 기준. ALF 응대 ${num(cur.alf)}건 중 태스크가 실행된 상담 ${num(cur.task_chats)}건 (${cur.alf ? (cur.task_chats / cur.alf * 100).toFixed(1) : '—'}%). 한 상담에서 같은 태스크가 여러 번 돌아도 상담 수는 1로 셉니다. 해결 비율 = 그 상담 중 상담사 배정 없이 끝난 비율 (반품·배송 문제 접수처럼 사진·영상 확인이 필요한 접수형 태스크는 상담사 연결이 설계라 낮게 나옵니다).`;
-    $('#tasks').innerHTML = `<div class="tag-row t7 head"><span></span><span>태스크</span><span class="tag-track"></span><span class="tag-num">실행 상담</span><span class="tag-share">실행 횟수</span><span class="tag-d tag-solo">해결 비율</span><span class="tag-d">전주 대비</span></div>`
+    $('#tasks').innerHTML = `<div class="tag-row t7 head"><span></span><span>태스크</span><span class="tag-track"></span><span class="tag-num">실행 상담</span><span class="tag-share">실행 횟수</span><span class="tag-d tag-solo">해결 비율</span><span class="tag-d">${PREV()} 대비</span></div>`
       + top.map(([id, t], i) => {
         const pv = prev && prev.tasks ? prev.tasks[id] : undefined, nm = TN[id];
         return `<div class="tag-row t7"><span class="tag-rank">${i + 1}</span>
@@ -914,7 +937,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
     const top = Object.entries(cur.tags).sort((a, b) => b[1] - a[1]).slice(0, 10), max = top.length ? top[0][1] : 1;
     $('#lowcsat-sub').textContent = `${view === ALL ? `전 브랜드 ${BR.length}개 채널` : view} · CSAT 1~3점 응답 ${num(cur.n)}건 (설문 발송 시각 기준${cur.un ? `, 태그 없는 상담 ${cur.un}건` : ''}). 한 상담에 태그가 여럿이면 태그마다 셉니다. 비중 = 태그 건수 ÷ 1~3점 응답 수.${cur.n && cur.n < 10 ? ' 응답이 10건 미만이라 참고만 해 주세요.' : ''}`;
     if (!top.length) { $('#lowcsat').innerHTML = '<p class="sub" style="padding:24px 0;text-align:center">이 주에 CSAT 1~3점 응답이 없습니다.</p>'; return; }
-    $('#lowcsat').innerHTML = `<div class="tag-row head"><span></span><span>상담 태그</span><span class="tag-track"></span><span class="tag-num">건수</span><span class="tag-share">비중</span><span class="tag-d">전주 대비</span></div>`
+    $('#lowcsat').innerHTML = `<div class="tag-row head"><span></span><span>상담 태그</span><span class="tag-track"></span><span class="tag-num">건수</span><span class="tag-share">비중</span><span class="tag-d">${PREV()} 대비</span></div>`
       + top.map(([t, v], i) => {
         const pv = prev ? prev.tags[t] : undefined;
         return `<div class="tag-row low"><span class="tag-rank">${i + 1}</span><span class="tag-name" title="${t}">${t}</span>
@@ -924,11 +947,11 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); display: flex
       }).join('');
   }
 
-  function syncHash() { history.replaceState(null, '', `#brand=${encodeURIComponent(view)}&week=${W[sel].end}`); }
+  function syncHash() { history.replaceState(null, '', `#brand=${encodeURIComponent(view)}&week=${W[sel].end}${mode === 'month' ? '&mode=month' : ''}`); }
   function setSel(i) { sel = i; $('#week').value = i; render(); }
   function setView(b) { view = b; render(); }
   const renderVisuals = () => { renderCharts(); renderAlf(); renderAgent(); renderTraffic(); };
-  function render() { renderHead(); renderTiles(); renderCompare(); renderVisuals(); renderTasks(); renderTags(); renderLowCsat(); renderTable(); syncHash(); }
+  function render() { applyModeTexts(); renderHead(); renderTiles(); renderCompare(); renderVisuals(); renderTasks(); renderTags(); renderLowCsat(); renderTable(); syncHash(); }
 
   $('#week').value = sel;
   $('#week').addEventListener('change', e => setSel(+e.target.value));
