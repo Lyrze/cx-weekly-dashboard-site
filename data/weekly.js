@@ -1,6 +1,6 @@
 // 주간 실적 데이터 (금 17:00 ~ 금 17:00). scripts/collect_weekly.py 가 만든다. 직접 고치지 않는다.
 window.WEEKLY = {
- "generated_at": "2026-11-04T14:48:51+09:00",
+ "generated_at": "2026-11-04T14:52:10+09:00",
  "basis": "CX_주간실적_집계기준.md v2.2",
  "main_brand": "슬룸",
  "brands": [
