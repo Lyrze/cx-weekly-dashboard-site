@@ -409,7 +409,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
           <li><b>주간</b>: 금 17:00 ~ 다음 금 17:00 (KST, 시작 포함·끝 제외)</li>
           <li><b>월간</b>: 달력 기준 1일 00:00 ~ 다음 달 1일 00:00</li>
           <li>ALF·I/B·FRT는 관여 시작 시각(<code>managedAt</code>), CSAT·CES는 설문 폼 발송 시각 기준</li>
-          <li>공통 필터: 채널톡 메시지·전화·이메일 상담만, <code>기타/테스트</code> 태그 제외</li>
+          <li>공통 필터: 채널톡 메시지·전화·이메일 상담만 (네이버 톡톡 등 앱 연동 경로 제외), <code>기타/테스트</code>·<code>배송일정_테스트</code> 태그 제외</li>
         </ul>
         <h3>핵심 지표</h3>
         <table>
@@ -419,11 +419,15 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
             <tr><td>ALF 처리 비율</td><td>슬룸</td><td>ALF가 응대하고 상담사 첫 답변이 없는 상담 ÷ I/B 상담</td><td>71% 이상</td></tr>
             <tr><td>CSAT</td><td>전 브랜드 10개 합산</td><td>만족도 응답(1~5점)을 응답 단위로 합쳐 평균. 상담의 마지막 설문 폼 발송 시각이 기간 안인 응답</td><td>4.0점 이상</td></tr>
             <tr><td>CES</td><td>슬룸</td><td>노력 점수 응답 평균. 시각 기준은 CSAT와 같음</td><td>3.6점 이상</td></tr>
-            <tr><td>FRT</td><td>전 브랜드</td><td>영업일마다 직전 영업일 17:00 ~ 당일 17:00 상담의 운영시간 첫 응답 시간 평균(월요일은 주말 포함) → 기간 안 일별 값 단순 평균 → 브랜드 값 단순 평균. 상담 수 가중 없음, O/B 태그 제외</td><td>10분 이내</td></tr>
+            <tr><td>FRT</td><td>전 브랜드</td><td>영업일마다 직전 영업일 17:00 ~ 당일 17:00 상담의 운영시간 첫 응답 시간 평균(월요일은 주말 포함) → 기간 안 일별 값 단순 평균 = 브랜드 FRT. 전 브랜드 FRT = 날짜마다 브랜드 값 평균 → 그 날짜별 값 단순 평균 (일일 시트 '전 브랜드 FRT' 줄과 같음). 상담 수 가중 없음. 제외 태그는 아래 참고</td><td>10분 이내</td></tr>
           </tbody>
         </table>
         <ul>
           <li><b>I/B 상담</b>: 채널톡 커스텀 리포트 '💬 전체 I/B 인입호 (ALF 포함)'과 같은 기준. 미응대 사유(missedReason) 14종과 O/B 태그 4종(<code>OB</code>·<code>OB/리뷰OB</code>·<code>OB/일반OB</code>·<code>OB/콜백OB</code>) 제외</li>
+          <li><b>FRT 제외 태그 13종</b> (태그 앞 <code>#</code>은 무시):
+            콜백 7종 <code>전화구매콜백</code>·<code>주문취소콜백</code>·<code>미배송콜백</code>·<code>반품환불일정콜백</code>·<code>오배송콜백</code>·<code>재회수콜백</code>·<code>취소후배송콜백</code>,
+            테스트 2종 <code>배송일정_테스트</code>·<code>기타/테스트</code>,
+            O/B 4종 <code>OB</code>·<code>OB/리뷰OB</code>·<code>OB/일반OB</code>·<code>OB/콜백OB</code></li>
           <li><b>판정</b>: 목표 대비 달성 / 미달성. CSAT·CES 응답이 10건 미만이면 판정 대신 "참고"</li>
           <li>설문은 발송 시각 기준이라, 늦게 들어온 응답이 지난 기간 값에 더해져 조금 바뀔 수 있습니다</li>
         </ul>
@@ -436,7 +440,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
           <li><b>상담 태그</b>: 커스텀 리포트 '상담태그 별 문의 볼륨 (O/B 제외)'과 같은 기준, 상위 태그</li>
           <li><b>CSAT 1~3점 태그</b>: CSAT 1~3점 응답 상담에 달린 상담태그 순위 (설문 발송 시각 기준)</li>
         </ul>
-        <p class="basis-src">원문: 코워크/스킬배포/CX_주간실적_집계기준.md · 데이터는 채널톡 API 조회(GET)로만 모으고 집계 숫자만 담습니다.</p>
+        <p class="basis-src">원문: 코워크/스킬배포/CX_주간실적_집계기준.md (v2.3 확정 기준 · 일일 시트·주간 실적 덱과 같은 기준) · 데이터는 채널톡 API 조회(GET)로만 모으고 집계 숫자만 담습니다.</p>
       </div>
     </details>
   </footer>
@@ -481,7 +485,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
   const wkLongW = w => { const a = new Date(w.start + 'T00:00:00'), b = new Date(w.end + 'T00:00:00');
     return `${a.getMonth() + 1}/${a.getDate()}(${DAY[a.getDay()]}) 17:00 ~ ${b.getMonth() + 1}/${b.getDate()}(${DAY[b.getDay()]}) 17:00`; };
 
-  // ---------- 값 계산: 브랜드 원자료 → 화면 값 (전체는 집계 기준 v2.1 규칙대로) ----------
+  // ---------- 값 계산: 브랜드 원자료 → 화면 값 (전체는 집계 기준 v2.3 규칙대로) ----------
   const exOf = (b, fs) => fs.some(f => (b.sample || []).includes(f));
   function brandVal(w, brand, id) {
     const b = w.brands[brand]; if (!b) return { v: null };
