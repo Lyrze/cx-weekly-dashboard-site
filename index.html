@@ -459,7 +459,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
     { id: 'ces',        name: 'CES',          unit: '점',  target: 3.6, up: true, official: '슬룸',
       scope: { [ALL]: '슬룸 기준 (공식 지표)' }, desc: '노력 점수 응답 평균 (설문 발송 시각 기준)' },
     { id: 'frt',        name: 'FRT',          unit: 'sec', target: 600, up: false,
-      scope: { [ALL]: '브랜드별 값의 단순 평균' }, desc: '첫 응답까지 걸린 시간 (운영 시간 기준) · 일별 값의 단순 평균 (일일 시트와 같은 방식)' }
+      scope: { [ALL]: '날짜별 브랜드 평균의 단순 평균' }, desc: '첫 응답까지 걸린 시간 (운영 시간 기준) · 일별 값의 단순 평균 (일일 시트와 같은 방식)' }
   ];
   const KM = Object.fromEntries(KPIS.map(k => [k.id, k]));
   const FIELDS = { alf_rate: ['alf_rate'], alf_handle: ['alf_handle'], csat: ['csat_sum', 'csat_n'], ces: ['ces_sum', 'ces_n'], frt: ['frt'] };
@@ -501,8 +501,14 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
       return { v: n ? s / n : null, n, ex };
     }
     if (id === 'frt') {
-      const xs = BR.map(b => ({ v: w.brands[b].frt, ex: exOf(w.brands[b], ['frt']) })).filter(x => x.v != null);
-      return { v: xs.length ? xs.reduce((a, x) => a + x.v, 0) / xs.length : null, nb: xs.length, ex: xs.some(x => x.ex) };
+      // 일일 시트 10행 '전 브랜드 FRT'와 같은 방식: 영업일마다 브랜드 평균 → 그 날짜별 값을 단순 평균
+      const xs = BR.map(b => ({ v: w.brands[b].frt, d: w.brands[b].frt_daily, ex: exOf(w.brands[b], ['frt']) })).filter(x => x.v != null);
+      const byDay = {};
+      xs.forEach(x => Object.entries(x.d || {}).forEach(([d, v]) => (byDay[d] = byDay[d] || []).push(v)));
+      const days = Object.values(byDay).map(a => a.reduce((s, v) => s + v, 0) / a.length);
+      const v = days.length ? days.reduce((a, x) => a + x, 0) / days.length
+              : xs.length ? xs.reduce((a, x) => a + x.v, 0) / xs.length : null;   // 예전 데이터(frt_daily 없음) 대비
+      return { v, nb: xs.length, ex: xs.some(x => x.ex) };
     }
   }
   function volume(w, v = view) {
@@ -641,7 +647,7 @@ footer { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
           <span class="cmp-val ${r.v != null && !smallN(k, r) && !pass(k, r.v) ? 'miss' : ''}">${fmt(k, r.v)}<small>${(r.n ?? 0).toLocaleString()}건${smallN(k, r) && r.n ? ' · 참고' : ''}</small></span>
         </div>`).join('')}${none.length ? `<div class="cmp-empty">${id === 'frt' ? '상담' : '응답'} 없음: ${none.map(r => r.b).join(' · ')}</div>` : ''}</div>
         ${id === 'ces' ? '<div class="cmp-foot">공식 CES는 슬룸 값입니다. 다른 브랜드는 참고용입니다.</div>' : ''}
-        ${id === 'frt' ? '<div class="cmp-foot">FRT는 일일 시트와 같은 방식입니다. 영업일마다 직전 영업일 17시~당일 17시 평균을 내고(월요일엔 주말 포함), 그 일별 값을 단순 평균합니다. 전체 FRT는 브랜드 값을 다시 단순 평균합니다.</div>' : ''}
+        ${id === 'frt' ? '<div class="cmp-foot">FRT는 일일 시트와 같은 방식입니다. 영업일마다 직전 영업일 17시~당일 17시 평균을 내고(월요일엔 주말 포함), 그 일별 값을 단순 평균합니다. 전체 FRT도 일일 시트 \'전 브랜드 FRT\' 줄과 같이, 날짜마다 브랜드 값을 평균한 뒤 그 날짜별 값을 단순 평균합니다.</div>' : ''}
       </article>`;
     }).join('');
     $('#cmp').querySelectorAll('.cmp-name').forEach(e => e.addEventListener('click', () => setView(e.dataset.b)));
